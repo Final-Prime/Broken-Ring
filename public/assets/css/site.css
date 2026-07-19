@@ -8,6 +8,7 @@
   --ember: #d65a2d;
   --ember-hot: #ff7946;
   --ash: #c1b4a0;
+  --display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
   --max: 1280px;
 }
 
@@ -100,11 +101,19 @@ footer {
 }
 
 .hero {
+  position: relative;
   display: grid;
-  min-height: 650px;
-  grid-template-columns: minmax(280px, .9fr) minmax(420px, 1.1fr);
+  min-height: min(760px, calc(100vh - 84px));
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   border-bottom: 1px solid var(--line);
+  isolation: isolate;
+  background-image:
+    linear-gradient(90deg, rgba(6, 8, 10, .96) 0%, rgba(6, 8, 10, .82) 34%, rgba(6, 8, 10, .32) 65%, rgba(6, 8, 10, .12) 100%),
+    linear-gradient(0deg, rgba(9, 7, 6, .88) 0%, transparent 35%),
+    url("../images/title-westwatch.webp");
+  background-position: center;
+  background-size: cover;
 }
 
 .sigil {
@@ -181,7 +190,12 @@ footer {
   box-shadow: 0 0 16px var(--ember);
 }
 
-.hero-copy { padding: 70px 0 70px 8vw; }
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  padding: 84px clamp(24px, 7vw, 92px);
+}
 
 .eyebrow,
 .section-index {
@@ -194,24 +208,29 @@ footer {
 
 h1 {
   margin: 0;
-  font-size: clamp(72px, 10vw, 154px);
-  font-weight: 950;
-  letter-spacing: -.075em;
-  line-height: .72;
+  color: #efe5d2;
+  font-family: var(--display);
+  font-size: clamp(68px, 9vw, 132px);
+  font-weight: 700;
+  letter-spacing: -.055em;
+  line-height: .78;
+  text-shadow: 0 10px 32px rgba(0, 0, 0, .7);
 }
 
 h1 span { display: block; }
 h1 span:last-child {
-  margin-left: .26em;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--ash);
+  margin-top: .18em;
+  margin-left: .06em;
+  color: #bd8c68;
+  font-size: .74em;
+  letter-spacing: .16em;
 }
 
 .premise {
   max-width: 430px;
   margin: 44px 0 0;
   color: var(--muted);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--display);
   font-size: clamp(18px, 2vw, 24px);
   font-style: italic;
 }
@@ -270,7 +289,7 @@ h1 span:last-child {
 .status-panel > p {
   margin: 34px 0 0;
   color: var(--muted);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--display);
   font-size: 17px;
   line-height: 1.65;
 }
@@ -315,10 +334,17 @@ footer span:last-child { text-align: right; }
 
 @media (max-width: 860px) {
   .site-header, main, footer { width: min(calc(100% - 32px), var(--max)); }
-  .hero { min-height: auto; grid-template-columns: 1fr; padding: 72px 0; }
-  .sigil { width: min(78vw, 380px); }
-  .hero-copy { padding: 64px 0 0; }
-  h1 { font-size: clamp(68px, 20vw, 126px); }
+  .hero {
+    min-height: 690px;
+    grid-template-columns: 1fr;
+    background-image:
+      linear-gradient(90deg, rgba(6, 8, 10, .9) 0%, rgba(6, 8, 10, .58) 72%, rgba(6, 8, 10, .28) 100%),
+      linear-gradient(0deg, rgba(9, 7, 6, .92) 0%, transparent 52%),
+      url("../images/title-westwatch.webp");
+    background-position: 68% center;
+  }
+  .hero-copy { padding: 72px clamp(22px, 7vw, 56px); }
+  h1 { font-size: clamp(64px, 18vw, 112px); }
   .status-panel { grid-template-columns: 1fr; gap: 14px; }
   .status-panel > p, .status-panel dl { margin-top: 18px; }
 }
