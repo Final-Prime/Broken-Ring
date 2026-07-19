@@ -1,0 +1,9 @@
+{
+  "project": "Broken Ring",
+  "publisher": "Final Prime",
+  "channel": "public",
+  "build": "0.1.0-shell",
+  "playable": false,
+  "entryChapter": null,
+  "contentSource": "reviewed-export-only"
+}
