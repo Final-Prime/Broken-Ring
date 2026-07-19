@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "series": "Broken Ring",
+  "chapters": [
+    {
+      "id": "chapter-01",
+      "slug": "the-road-to-westwatch",
+      "title": "The Road to Westwatch",
+      "href": "story.html",
+      "status": "public",
+      "panelCount": 6,
+      "published": "2026-07-20",
+      "cover": "assets/images/ch01-wagon-compass.webp"
+    }
+  ]
+}

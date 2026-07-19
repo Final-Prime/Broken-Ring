@@ -1,0 +1,19 @@
+.story-action {
+  display: block;
+  color: #e8dfcf;
+  background: rgba(23, 18, 15, .94);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color .2s ease, color .2s ease, background-color .2s ease;
+}
+
+.story-action:hover,
+.story-action:focus-visible {
+  border-color: #ff7946;
+  color: #ff7946;
+  background: #201610;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-action { transition: none; }
+}
