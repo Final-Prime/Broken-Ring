@@ -23,8 +23,8 @@ from wherever the divine planes don't naturally reach, is as good a candidate
 explanation as any for the "silent heavens," alongside the doctrinal
 possibilities `gameplay-lab` already leaves as `SUPERPOSITION`.
 
-What later broke the crater wall specifically in the south, letting the
-Great Desert in, is resolved below under "The Southern Breach."
+Left open here too: what later broke the crater wall specifically in the
+south, letting the Great Desert in.
 
 ## The Great Migration
 
@@ -35,31 +35,12 @@ Resolved here: long after the Cataclysm, a second wave of falling entities —
 the **DarkFall** — struck the wider world outside the Ring: void entities that
 fell like smaller meteors and drained the life from everything they touched.
 Some could reshape themselves mid-fall to steer their own trajectory toward a
-chosen landing site rather than simply falling where gravity took them — one
-put that ability to particularly deliberate use (see "The Southern Breach"
-below). The land beyond the crater is believed, at least in theory and never
-confirmed by any surviving account, to have been left empty and dead. Over
-eons, survivors crossed by boat to reach the Ring's eastern shore; those who
-couldn't make the crossing didn't survive. This is the migration bards'
-fragmented pre-Migration histories refer to.
-
-## The Southern Breach
-
-Left open by this repo's own Cataclysm entry above: what later broke the
-crater wall specifically in the south, letting the Great Desert in.
-`gameplay-lab`'s own DM-only secrets independently place the Void
-intelligence's impact crater "near Devil's Pass," without stating whether
-that impact is what breached the wall.
-
-Resolved here: it is. One meteor of the DarkFall specifically targeted the
-crater wall, curving in from the northeast and striking on a southwesterly
-line before landing just outside the Ring, at what is now Devil's Pass.
-Punching straight through solid mountain took the brunt of its violence,
-which is why only one length of wall failed rather than a wider stretch —
-and why the resulting gap stayed a narrow, single passage instead of
-levelling the range for miles around. The still-active, still-hungry
-entity buried at that impact point is the source of the Great Desert's
-slow, ongoing northward creep.
+chosen landing site rather than simply falling where gravity took them. The
+land beyond the crater is believed, at least in theory and never confirmed by
+any surviving account, to have been left empty and dead. Over eons, survivors
+crossed by boat to reach the Ring's eastern shore; those who couldn't make the
+crossing didn't survive. This is the migration bards' fragmented pre-Migration
+histories refer to.
 
 ## Trythium's protection
 
@@ -68,9 +49,7 @@ what it does, not where it came from or why the Ring alone kept its life).
 Resolved here: Trythium is why the Ring specifically survived the DarkFall
 when the outside world apparently didn't — the dampening effect on arcane and
 divine energy already established in `RING_TRAITS.md`/`MAGIC.md` extends to
-whatever the void entities' draining influence actually is. See this repo's
-`TRYTHIUM.md` for what actually powers that protection: the Heart, deep
-beneath the Ring.
+whatever the void entities' draining influence actually is.
 
 ## The blood-trees and the Assembly Glade
 
