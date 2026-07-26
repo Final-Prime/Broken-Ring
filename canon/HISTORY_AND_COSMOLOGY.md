@@ -47,7 +47,9 @@ what it does, not where it came from or why the Ring alone kept its life).
 Resolved here: Trythium is why the Ring specifically survived the DarkFall
 when the outside world apparently didn't — the dampening effect on arcane and
 divine energy already established in `RING_TRAITS.md`/`MAGIC.md` extends to
-whatever the void entities' draining influence actually is.
+whatever the void entities' draining influence actually is. See this repo's
+`TRYTHIUM.md` for what actually powers that protection: the Heart, deep
+beneath the Ring.
 
 ## The blood-trees and the Assembly Glade
 
