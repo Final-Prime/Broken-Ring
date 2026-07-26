@@ -1,0 +1,1145 @@
+<title>Adventure Runtime — dashboard</title>
+<style>
+  :root {
+    --bg: #dedcd6; --surface: #f2f1ec; --surface-2: #e7e5de;
+    --text: #201f26; --text-dim: #55525c; --line: #c6c3ba;
+    --content: #435265; --content-tint: #dde2e7;
+    --state: #9c2d40; --state-tint: #f2dcdf; --thread: #8a6f24;
+    --serif: Iowan Old Style, "Palatino Linotype", Palatino, Georgia, ui-serif, serif;
+    --sans: "Segoe UI", "Helvetica Neue", Helvetica, Arial, ui-sans-serif, sans-serif;
+    --mono: ui-monospace, "Cascadia Code", "Segoe UI Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15141c; --surface: #1e1c27; --surface-2: #262331;
+      --text: #eae7ea; --text-dim: #a9a5b2; --line: #38354499;
+      --content: #93a7bd; --content-tint: #26313f;
+      --state: #d5586b; --state-tint: #3a2229; --thread: #c9a94f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #15141c; --surface: #1e1c27; --surface-2: #262331;
+    --text: #eae7ea; --text-dim: #a9a5b2; --line: #38354499;
+    --content: #93a7bd; --content-tint: #26313f;
+    --state: #d5586b; --state-tint: #3a2229; --thread: #c9a94f;
+  }
+  :root[data-theme="light"] {
+    --bg: #dedcd6; --surface: #f2f1ec; --surface-2: #e7e5de;
+    --text: #201f26; --text-dim: #55525c; --line: #c6c3ba;
+    --content: #435265; --content-tint: #dde2e7;
+    --state: #9c2d40; --state-tint: #f2dcdf; --thread: #8a6f24;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); color: var(--text); }
+  body { font-family: var(--sans); margin: 0; padding: 18px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; text-wrap: balance; margin: 0; }
+  button {
+    font-family: var(--sans); cursor: pointer; border: 1px solid var(--line);
+    background: var(--surface); color: var(--text); border-radius: 4px;
+    padding: 7px 12px; font-size: 0.84rem;
+  }
+  button:hover { border-color: var(--thread); }
+  button:disabled { opacity: 0.45; cursor: not-allowed; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 2px solid var(--thread); outline-offset: 1px;
+  }
+  button.primary { background: var(--content); color: #fff; border-color: var(--content); }
+  button.danger { background: var(--state); color: #fff; border-color: var(--state); }
+  button.active { background: var(--thread); color: #fff; border-color: var(--thread); }
+  input, textarea, select {
+    font-family: var(--sans); background: var(--surface-2); color: var(--text);
+    border: 1px solid var(--line); border-radius: 4px; padding: 6px 9px; font-size: 0.86rem;
+  }
+  label { font-size: 0.76rem; color: var(--text-dim); display: block; margin: 8px 0 4px; }
+  .eyebrow { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--thread); }
+
+  main { max-width: min(1720px, 100vw - 24px); margin: 0 auto; }
+  header { text-align: center; padding: 10px 0 20px; }
+  header h1 { font-size: clamp(1.4rem, 3.2vw, 1.9rem); margin: 6px 0 8px; }
+  header p { color: var(--text-dim); max-width: 60ch; margin: 0 auto; font-size: 0.92rem; }
+
+  /* ---------- top-level tabs ---------- */
+  .tabs { display: flex; gap: 6px; justify-content: center; margin-bottom: 6px; flex-wrap: wrap; }
+  .tab-btn {
+    padding: 9px 16px; border-radius: 6px 6px 0 0; border-bottom: none;
+    font-size: 0.86rem; position: relative; top: 1px;
+  }
+  .tab-btn[aria-selected="true"] { background: var(--surface); border-color: var(--line); border-bottom: 2px solid var(--surface); font-weight: 600; }
+  .tab-btn .soon { font-family: var(--mono); font-size: 0.62rem; color: var(--text-dim); margin-left: 5px; }
+  .tab-panel { display: none; border-top: 1px solid var(--line); padding-top: 18px; }
+  .tab-panel.active { display: block; }
+  .soon-panel { text-align: center; padding: 60px 20px; color: var(--text-dim); }
+  .soon-panel .eyebrow { display: block; margin-bottom: 8px; }
+
+  /* ---------- sub tabs (inside Térképek) ---------- */
+  .subtabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 16px; }
+  .subtab-btn { border-radius: 20px; padding: 6px 16px; font-size: 0.82rem; }
+  .subtab-btn.active { background: var(--content); color: #fff; border-color: var(--content); }
+  .sub-panel { display: none; }
+  .sub-panel.active { display: block; }
+
+  .toolbar { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; align-items: center; margin-bottom: 10px; }
+  .toolbar .group {
+    display: flex; gap: 6px; align-items: center; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 6px; padding: 5px 9px;
+  }
+  .toolbar .group span { font-size: 0.72rem; color: var(--text-dim); font-family: var(--mono); }
+  .toolbar .group input[type=number] { width: 52px; padding: 4px 6px; }
+  .swatch-row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 10px; }
+  .swatch {
+    display: flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 5px;
+    border: 2px solid transparent; background: var(--surface); font-size: 0.8rem;
+  }
+  .swatch.active { border-color: var(--thread); }
+  .swatch .chip { width: 14px; height: 14px; border-radius: 3px; display: inline-block; flex-shrink: 0; }
+  .swatch .icon-chip { width: 16px; height: 16px; display: inline-flex; align-items:center; justify-content:center; font-size: 13px; }
+
+  .hint { text-align: center; font-size: 0.82rem; color: var(--text-dim); margin-bottom: 12px; min-height: 1.3em; }
+  .hint strong { color: var(--thread); }
+
+  .workspace { display: grid; grid-template-columns: 1fr 260px; gap: 14px; }
+  .canvas-wrap {
+    position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+    overflow: auto; display: flex; align-items: center; justify-content: center;
+  }
+  #sub-hex:fullscreen { background: var(--bg); overflow-y: auto; padding: 16px; }
+  svg.canvas { display: block; touch-action: none; }
+  .side { display: flex; flex-direction: column; gap: 12px; max-height: 560px; overflow-y: auto; }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; }
+  .panel h3 { font-size: 0.82rem; font-family: var(--sans); text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-dim); margin-bottom: 8px; }
+  .row-list { display: flex; flex-direction: column; gap: 6px; }
+  .row { display: flex; align-items: center; gap: 8px; background: var(--surface-2); border-radius: 4px; padding: 6px 9px; font-size: 0.8rem; }
+  .row .main { flex: 1; min-width: 0; }
+  .row .main .name { font-weight: 600; }
+  .row .main .sub { color: var(--text-dim); font-size: 0.74rem; font-family: var(--mono); }
+  .row button { padding: 3px 7px; font-size: 0.74rem; flex-shrink: 0; }
+  .empty { color: var(--text-dim); font-size: 0.8rem; font-style: italic; }
+
+  .poi-form { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; justify-content: center; margin-bottom: 10px; }
+  .poi-form input[type=text] { width: 190px; }
+  .icon-pick { display: flex; gap: 4px; flex-wrap: wrap; max-width: 260px; }
+  .icon-pick button { padding: 5px 7px; font-size: 15px; }
+  .icon-pick button.chosen { border-color: var(--thread); background: var(--content-tint); }
+
+  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: center; z-index: 20; }
+  .modal { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px; width: 300px; box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
+  .modal h3 { font-family: var(--serif); font-size: 1rem; margin-bottom: 4px; }
+  .modal .actions { display: flex; gap: 8px; margin-top: 14px; justify-content: flex-end; }
+  .checkline { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+  .checkline input { width: auto; }
+  .checkline label { margin: 0; color: var(--text); font-size: 0.84rem; }
+
+  .io-section { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .io-section textarea { width: 100%; height: 140px; font-family: var(--mono); font-size: 0.74rem; resize: vertical; }
+  .io-actions { display: flex; gap: 8px; margin-top: 8px; }
+  .layout-note { font-size: 0.74rem; color: var(--text-dim); margin-top: 6px; }
+
+  @media (max-width: 900px) {
+    .workspace { grid-template-columns: 1fr; }
+    .io-section { grid-template-columns: 1fr; }
+  }
+</style>
+
+<main>
+  <header>
+    <p class="eyebrow">Adventure Runtime</p>
+    <h1>Konzolidált dashboard</h1>
+    <p>Egy hely, ahol nyilvántartunk mindent — most a térkép résszel kezdjük, a többi fül még jön.</p>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button class="tab-btn" role="tab" aria-selected="true" data-tab="maps">Térképek</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-tab="chars" disabled>Karakterek <span class="soon">hamarosan</span></button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-tab="log" disabled>Napló <span class="soon">hamarosan</span></button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-tab="lore" disabled>Lore <span class="soon">hamarosan</span></button>
+  </div>
+
+  <section class="tab-panel active" id="tab-maps">
+
+    <div class="subtabs">
+      <button class="subtab-btn active" data-sub="hex">🗺️ Világtérkép (hex, terep)</button>
+      <button class="subtab-btn" data-sub="pc">🔗 Helyi gráf (jelenet-szintű)</button>
+    </div>
+
+    <!-- ================= HEX WORLD MAP ================= -->
+    <div class="sub-panel active" id="sub-hex">
+      <div class="toolbar">
+        <div class="group">
+          <span>oszlop</span><input type="number" id="hex-cols" value="54" min="4" max="80">
+          <span>sor</span><input type="number" id="hex-rows" value="39" min="4" max="60">
+          <button id="hex-regen">Rács újragenerálása</button>
+        </div>
+        <div class="group">
+          <label style="margin:0;display:flex;align-items:center;gap:6px;">
+            <input type="checkbox" id="hex-coords" checked style="width:auto;"> koordináták
+          </label>
+        </div>
+        <div class="group">
+          <span>felbontás ×</span><input type="number" id="hex-upscale-factor" value="2" min="2" max="4">
+          <button id="hex-upscale">🔍 Upscale + részletek</button>
+        </div>
+        <button id="hex-fullscreen">⛶ Teljes képernyő</button>
+        <button id="hex-example">🗺️ HD alapállapot visszaállítása</button>
+        <button id="hex-clear" class="danger">🗑 Teljes törlés</button>
+      </div>
+
+      <div class="swatch-row" id="hex-terrain-swatches"></div>
+
+      <div class="poi-form">
+        <div>
+          <label style="margin:0 0 4px;">Új egyedi jelölő neve</label>
+          <input type="text" id="hex-poi-name" placeholder="pl. Meteor becsapódás helyszíne">
+        </div>
+        <div>
+          <label style="margin:0 0 4px;">Ikon</label>
+          <div class="icon-pick" id="hex-icon-pick"></div>
+        </div>
+        <button id="hex-poi-add" class="primary">+ Jelölő létrehozása</button>
+      </div>
+      <div class="swatch-row" id="hex-poi-swatches"></div>
+
+      <div class="hint" id="hex-hint"></div>
+
+      <div class="workspace">
+        <div class="canvas-wrap">
+          <svg class="canvas" id="hex-canvas"></svg>
+        </div>
+        <div class="side">
+          <div class="panel">
+            <h3>Elhelyezett egyedi jelölők</h3>
+            <div class="row-list" id="hex-poi-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="io-section">
+        <div class="panel">
+          <h3>Export</h3>
+          <textarea id="hex-export" readonly></textarea>
+          <div class="io-actions">
+            <button id="hex-copy">📋 Másolás</button>
+            <button id="hex-download">⬇️ Letöltés (.json)</button>
+          </div>
+          <p class="layout-note">Minden hexnek pontos (oszlop, sor) koordinátája van — nem "kb. két városnyira", hanem címezhető rácspont.</p>
+        </div>
+        <div class="panel">
+          <h3>Import</h3>
+          <textarea id="hex-import" placeholder="Illeszd be ide egy korábbi export JSON-t..."></textarea>
+          <div class="io-actions"><button id="hex-import-btn" class="primary">📥 Betöltés</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= POINT-CRAWL (local graph) ================= -->
+    <div class="sub-panel" id="sub-pc">
+      <div class="toolbar">
+        <button id="pc-example">📍 Példa betöltése (Westwatch)</button>
+        <button id="pc-connect">🔗 Összekötés mód</button>
+        <button id="pc-clear" class="danger">🗑 Teljes törlés</button>
+      </div>
+      <div class="hint" id="pc-hint"></div>
+
+      <div class="workspace">
+        <div class="canvas-wrap">
+          <svg class="canvas" id="pc-canvas" viewBox="0 0 800 480" style="width:100%;height:480px;cursor:crosshair;"></svg>
+        </div>
+        <div class="side">
+          <div class="panel"><h3>Helyszínek</h3><div class="row-list" id="pc-loc-list"></div></div>
+          <div class="panel"><h3>Útvonalak</h3><div class="row-list" id="pc-edge-list"></div></div>
+        </div>
+      </div>
+
+      <div class="io-section">
+        <div class="panel">
+          <h3>Export</h3>
+          <textarea id="pc-export" readonly></textarea>
+          <div class="io-actions">
+            <button id="pc-copy">📋 Másolás</button>
+            <button id="pc-download">⬇️ Letöltés (.json)</button>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Import</h3>
+          <textarea id="pc-import" placeholder="Illeszd be ide egy korábbi export JSON-t..."></textarea>
+          <div class="io-actions"><button id="pc-import-btn" class="primary">📥 Betöltés</button></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="tab-panel" id="tab-chars"><div class="soon-panel"><span class="eyebrow">Hamarosan</span>Karakterlapok és aktuális állapotuk.</div></section>
+  <section class="tab-panel" id="tab-log"><div class="soon-panel"><span class="eyebrow">Hamarosan</span>A canonical event log böngészője.</div></section>
+  <section class="tab-panel" id="tab-lore"><div class="soon-panel"><span class="eyebrow">Hamarosan</span>A gameplay-lab canon anyagának nézete.</div></section>
+</main>
+
+<script>
+// ============================================================
+// Top-level + sub tab switching
+// ============================================================
+(function () {
+  document.querySelectorAll('.tab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (btn.disabled) return;
+      document.querySelectorAll('.tab-btn').forEach(function (b) { b.setAttribute('aria-selected', 'false'); });
+      document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+  document.querySelectorAll('.subtab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.subtab-btn').forEach(function (b) { b.classList.remove('active'); });
+      document.querySelectorAll('.sub-panel').forEach(function (p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('sub-' + btn.dataset.sub).classList.add('active');
+    });
+  });
+})();
+
+// ============================================================
+// HEX WORLD MAP
+// ============================================================
+(function () {
+  var MARGIN = 30;
+  var MIN_SIZE = 7, MAX_SIZE = 60;
+  var SIZE = 24;
+  var HEX_W = Math.sqrt(3) * SIZE;
+  var HEX_H = 2 * SIZE;
+
+  var TERRAINS = [
+    { id: 'plains', label: 'Síkság', color: '#9caa6b', colorDark: '#7c8a54' },
+    { id: 'forest', label: 'Erdő', color: '#4f7a4a', colorDark: '#3d5f3a' },
+    { id: 'crimson', label: 'Crimson-erdő', color: '#7a3540', colorDark: '#8a4550' },
+    { id: 'mountain', label: 'Hegy', color: '#8a8378', colorDark: '#7a7368' },
+    { id: 'desert', label: 'Sivatag', color: '#c9a86a', colorDark: '#b8935a' },
+    { id: 'water', label: 'Víz / tenger', color: '#4a7a94', colorDark: '#3f6a82' },
+    { id: 'snow', label: 'Hó / tundra', color: '#e8edf1', colorDark: '#aebbc4' },
+    { id: 'marsh', label: 'Mocsár / delta', color: '#6b7a4f', colorDark: '#57633f' }
+  ];
+  var TERRAIN_CODE = { p: 'plains', f: 'forest', c: 'crimson', m: 'mountain', d: 'desert', w: 'water', s: 'snow', b: 'marsh' };
+  var ICON_CHOICES = ['☄️','🏛️','🗼','🕳️','⛺','⚠️','💎','⚔️','✨','🏠','🌀','💀','⛰️','🔥'];
+
+  // HD world map: your original 18×13 sketch, upscaled ×3, hand-composed into named zones,
+  // then refined through several review passes (river connectivity, the west edge redrawn as
+  // unmapped mountain instead of a second desert, Wonderhills, Havenhold/Solari) — kept here
+  // as the pre-loaded starting point.
+  var HD_WORLD_ROWS = [
+    'mmmmmmmmmmmmmmmmmmmmmmmsmmmmmmmmsmmmmsmsmmmsmwwwwwwwww',
+    'mmmmmmmmmmmmmsmmmmmmsmssssssmsssmmsmmmmmmmmssswwwwwwww',
+    'mmmmmmmmmmmmmmmssmssssssssssmssmmmmsssmsmmssswwwwmmwsw',
+    'mmmmmmmmmmmmsssssssmwwsssmmmmmmmmsmmmmmmmssswwwwmsssww',
+    'mmmmmmmsmmsmssssssswwsmsmmmmmmmssspmssssssmmswwwspswww',
+    'mmmmmsmmmpsssppssswsssssssssssssssppssssssssswwwppssww',
+    'mmmmmmmmmpppwssspwwsssspsspspssspspspsmsssssswwwwppwsw',
+    'mmmmmmcmwpppwppppwpspssppssssspsssppssssssssswwwwpwwww',
+    'mmmmmmmmmwpppwppppwpfffffsswwwwwssssssssssspswwwwwwwww',
+    'mmmsmmccwcfppwppppwwfffffwwfffswwsssssssmpppswwwwwwwss',
+    'mmmsmmfmwppppwpppppfwfffwwfffffpwwfsswwwwppswwwwwwwwps',
+    'mmmmcmcmwpfppwppppffwwwwffffffffpwwwwfspwwwwsswwwwwwps',
+    'mmmmmfcccwpppwpppffffffffffffpfpppfwffbbbbswbbwbwwwppw',
+    'mmsmccfcwfffwppppppfffffffffcffpffppfbbbbbbbwwwwwwwwww',
+    'mmmsmmccwcfpwpppppfpffffffffffppppfppfbbbbbbwwwbwwwwww',
+    'mmmcccmwffppwpffppfffffffffffpfpfpfpppbpbbpbpbbbwwwwww',
+    'mssccccwccfcpwfpfpffffffffpfffffffffpppbpbbbbbwwwwwwww',
+    'mmmscfmwccffwfpfpfpffppffpppffffffffpbbpbbpbbwwbbwwwww',
+    'mmsmmcccwfpcfwwppppfpppppppppffffffffpbbbbbbwwbbpwwwww',
+    'mscmcccfwccfpwwwwpffpppppppppffcfpffpfbpbbbwbpbbwwwwww',
+    'mmmmccccwcfcfpfpwwpppppppfwwwwfffffffbbpbbbwbbwwwwwwww',
+    'msscccfcwcffcfpffwwppppppwwffwfffffffpbbbbwbwpbbbwwwww',
+    'mmssmccfwwfcfcfpffpwwwwpwwwfpfwwwffffwwwwwwwwbbbwwwwww',
+    'msmcmcccwccffppfpppffwwwwwpppfffwwwwwwwwbwbwwbbwbwwwww',
+    'msscccccwffcfppppfppffffwwppffffpfffppwbfbbbwwwwwwwwww',
+    'mmscfccwfcffpffffpfpfffffppppppffppfpppwwbwbbbbbwwwwww',
+    'mmcmcccwwcfpffcffpffpfffppfpppppfppppbpbpbbwwbbwbwwwww',
+    'mmssccccwfccfppfppppfffffffpppppppppppbbbbbbpbwpbwwwww',
+    'mmmsmcccwccpfffppffdffffppppppppppppppbppbbbbbpbpbpwww',
+    'mmscmcmcwcpdcpcdfdfddfdfdppppppppppppppbpwbbpbpbppwwww',
+    'mmmsccccwpccppdddddddddddddpppppppppppppbbbbbbbbbbwwww',
+    'mmsscccfwwcppcddfdddddddmddddppppppppppbppbbpbbbbwwwww',
+    'mmmmsmmmpwcdddddmdddddddddddddpdpppppppbbbpbpbbbbbwwww',
+    'mmmmsssmmwdddddddddddmddddddddddpppppppbpppppwwwwwwwww',
+    'mmmmmsmmcwddcdddddddddmdddddddmpppmmppppmppmpwwwwwwwww',
+    'mmmmmssmwwdddddddddddmdddddmdmmmmmmmmmmmmpmmmmwwwwwwww',
+    'mmmmmmssmmwmddddddmmmdddmmmddmmmmmmmmsmmmsmmmwwwwwwww',
+    'mmmmmmmsmswmdddddmdmmmmmmmmmmmsmmsmmmmmssmssmmwwwwwwww',
+    'mmmmmmmmsssdmdddmdmmdmmdmddddmmmmmsmsmmsmmssmswwwwwwww'
+  ];
+
+  // Every named place currently placed on the map, baked in as the pre-loaded default too.
+  var HD_WORLD_POIS = [
+    [33,1,'Frosthold','🏠'], [34,2,'Frosthold','🏠'], [50,2,'Glammerkin','💎'], [28,3,'Frosthold','🏠'],
+    [30,3,'Frosthold','🏠'], [37,3,'Frosthold','🏠'], [39,3,'Frosthold','🏠'], [48,3,'Glammerkin','💎'],
+    [34,4,'Frosthold','🏠'], [34,5,'Frosthold','🏠'], [49,5,'Glammerkin','💎'], [11,6,'Solari','🕳️'],
+    [16,6,'Wonderhills','🌀'], [28,6,'Wonderhills','🌀'], [32,6,'Wonderhills','🌀'], [36,6,'Wonderhills','🌀'],
+    [20,7,'Wonderhills','🌀'], [24,7,'Wonderhills','🌀'], [49,7,'Glammerkin','💎'], [18,8,'Coldvein','⛰️'],
+    [30,8,'Coldvein','⛰️'], [8,10,'Rosemire','⛰️'], [14,10,'Gnomecity','🌀'], [40,11,'Coldvein','⛰️'],
+    [12,13,'Eastrich River','⛰️'], [41,16,'Hillkin area','✨'], [23,19,'Elyria (főváros)','🏛️'], [22,20,'Elyria (főváros)','🏛️'],
+    [23,20,'Elyria (főváros)','🏛️'], [24,20,'Elyria (főváros)','🏛️'], [41,20,'Hillkin area','✨'], [6,21,'Stillwood Assembly Glade','✨'],
+    [21,21,'Elyria (főváros)','🏛️'], [22,21,'Elyria (főváros)','🏛️'], [23,21,'Elyria (főváros)','🏛️'], [24,21,'Elyria (főváros)','🏛️'],
+    [22,22,'Eastrich River','⛰️'], [23,22,'Elyria (főváros)','🏛️'], [8,23,'Rosemire','⛰️'], [36,23,'Eastrich River','⛰️'],
+    [12,25,'Westwatch','⛺'], [38,27,'Hillkin area','✨'], [41,27,'Hillkin area','✨'], [48,27,'Mariselle (kikötő)','🗼'],
+    [48,28,'Mariselle (kikötő)','🗼'], [49,28,'Mariselle (kikötő)','🗼'], [50,28,'Mariselle (kikötő)','🗼'], [32,29,'Hillkin area','✨'],
+    [35,29,'Hillkin area','✨'], [48,29,'Mariselle (kikötő)','🗼'], [49,29,'Mariselle (kikötő)','🗼'], [44,30,'Hillkin area','✨'],
+    [37,31,'Hillkin area','✨'], [34,32,'Hillkin area','✨'], [46,32,'Hillkin area','✨'], [41,33,'Hillkin area','✨'],
+    [40,34,'Hillkin area','✨'], [8,35,'Rosemire','⛰️'], [14,36,'Devil\'s Pass','⚠️'], [12,37,'Devil\'s Pass','⚠️'],
+    [13,37,'Devil\'s Pass','⚠️'], [14,37,'Devil\'s Pass','⚠️'], [15,37,'Devil\'s Pass','⚠️'], [13,38,'Devil\'s Pass','⚠️'],
+    [14,38,'Devil\'s Pass','⚠️'], [15,38,'Devil\'s Pass','⚠️']
+  ];
+
+  // Odd-r offset neighbor deltas (odd rows shifted right) — used only by the upscale detail pass.
+  var ODDR_EVEN = [[1,0],[0,-1],[-1,-1],[-1,0],[-1,1],[0,1]];
+  var ODDR_ODD  = [[1,0],[1,-1],[0,-1],[-1,0],[0,1],[1,1]];
+  var ACCENT_COMPATIBLE = {
+    plains: ['forest'], forest: ['plains','crimson'], crimson: ['forest'],
+    mountain: ['forest','snow'], desert: ['mountain'], water: [],
+    snow: ['mountain'], marsh: ['forest','water']
+  };
+
+  function isDark() {
+    var override = document.documentElement.getAttribute('data-theme');
+    if (override === 'dark') return true;
+    if (override === 'light') return false;
+    return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+
+  var cols = 54, rows = 39;
+  var terrain = {};   // "c,r" -> terrain id
+  HD_WORLD_ROWS.forEach(function (rowStr, r) {
+    rowStr.split('').forEach(function (ch, c) {
+      if (TERRAIN_CODE[ch]) terrain[c + ',' + r] = TERRAIN_CODE[ch];
+    });
+  });
+  var pois = {};       // "c,r" -> {label, icon}
+  HD_WORLD_POIS.forEach(function (p) { pois[p[0] + ',' + p[1]] = { label: p[2], icon: p[3] }; });
+  // Every place-name already on the map, pre-seeded as ready-to-use brushes so you can keep
+  // extending any of them (e.g. drop another Hillkin area hex) without retyping the name.
+  var poiTypes = [
+    { label: 'Elyria (főváros)', icon: '🏛️' },
+    { label: 'Westwatch', icon: '⛺' },
+    { label: 'Frosthold', icon: '🏠' },
+    { label: 'Mariselle (kikötő)', icon: '🗼' },
+    { label: "Devil's Pass", icon: '⚠️' },
+    { label: 'Stillwood Assembly Glade', icon: '✨' },
+    { label: 'Wonderhills', icon: '🌀' },
+    { label: 'Gnomecity', icon: '🌀' },
+    { label: 'Glammerkin', icon: '💎' },
+    { label: 'Solari', icon: '🕳️' },
+    { label: 'Coldvein', icon: '⛰️' },
+    { label: 'Rosemire', icon: '⛰️' },
+    { label: 'Eastrich River', icon: '⛰️' },
+    { label: 'Hillkin area', icon: '✨' }
+  ];
+  var activeBrush = null; // {kind: 'terrain'|'poi', id or index}
+  var chosenIcon = ICON_CHOICES[0];
+  var isPainting = false;
+  var lastPaintKey = null;
+
+  var svg = document.getElementById('hex-canvas');
+  var hint = document.getElementById('hex-hint');
+  var terrainSwatchRow = document.getElementById('hex-terrain-swatches');
+  var poiSwatchRow = document.getElementById('hex-poi-swatches');
+  var iconPick = document.getElementById('hex-icon-pick');
+  var exportBox = document.getElementById('hex-export');
+  var poiList = document.getElementById('hex-poi-list');
+
+  function key(c, r) { return c + ',' + r; }
+  function ns(tag) { return document.createElementNS('http://www.w3.org/2000/svg', tag); }
+
+  function hexCenter(c, r) {
+    return {
+      x: MARGIN + c * HEX_W + (r % 2 === 1 ? HEX_W / 2 : 0) + HEX_W / 2,
+      y: MARGIN + r * HEX_H * 0.75 + HEX_H / 2
+    };
+  }
+  function hexPoints(cx, cy) {
+    var pts = [];
+    for (var i = 0; i < 6; i++) {
+      var angle = Math.PI / 180 * (60 * i - 90);
+      pts.push((cx + SIZE * Math.cos(angle)).toFixed(1) + ',' + (cy + SIZE * Math.sin(angle)).toFixed(1));
+    }
+    return pts.join(' ');
+  }
+
+  // Gives .canvas-wrap a real, content-independent height (tied to the viewport, not to the
+  // grid it holds) so fitSize() below has something stable to fit hexes into — without this,
+  // box height and hex size would each depend on the other.
+  function fitCanvasBox() {
+    var wrap = svg.parentElement;
+    var top = wrap.getBoundingClientRect().top;
+    var available = window.innerHeight - top - 16;
+    wrap.style.height = Math.max(320, available) + 'px';
+  }
+
+  // Picks the largest hex SIZE that still lets the whole cols×rows grid fit inside the
+  // current canvas box, so bigger canvases and smaller grids both mean bigger hexes.
+  function fitSize() {
+    var wrap = svg.parentElement;
+    var availW = wrap.clientWidth - MARGIN * 2;
+    var availH = wrap.clientHeight - MARGIN * 2;
+    var byWidth = availW / (Math.sqrt(3) * (cols + 0.5));
+    var byHeight = availH / (2 + (rows - 1) * 1.5);
+    var fit = Math.floor(Math.min(byWidth, byHeight));
+    SIZE = Math.max(MIN_SIZE, Math.min(MAX_SIZE, isFinite(fit) ? fit : MAX_SIZE));
+    HEX_W = Math.sqrt(3) * SIZE;
+    HEX_H = 2 * SIZE;
+  }
+
+  function buildIconPicker() {
+    iconPick.innerHTML = '';
+    ICON_CHOICES.forEach(function (ic) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = ic;
+      if (ic === chosenIcon) b.classList.add('chosen');
+      b.addEventListener('click', function () {
+        chosenIcon = ic;
+        iconPick.querySelectorAll('button').forEach(function (x) { x.classList.remove('chosen'); });
+        b.classList.add('chosen');
+      });
+      iconPick.appendChild(b);
+    });
+  }
+
+  function buildTerrainSwatches() {
+    terrainSwatchRow.innerHTML = '';
+    TERRAINS.forEach(function (t) {
+      var sw = document.createElement('button');
+      sw.className = 'swatch';
+      sw.innerHTML = '<span class="chip" style="background:' + t.color + '"></span>' + t.label;
+      sw.addEventListener('click', function () { selectBrush({ kind: 'terrain', id: t.id }, sw); });
+      terrainSwatchRow.appendChild(sw);
+    });
+    var eraser = document.createElement('button');
+    eraser.className = 'swatch';
+    eraser.innerHTML = '<span class="chip" style="background:var(--surface-2);border:1px solid var(--line)"></span>Törlés';
+    eraser.addEventListener('click', function () { selectBrush({ kind: 'terrain', id: null }, eraser); });
+    terrainSwatchRow.appendChild(eraser);
+  }
+
+  function buildPoiSwatches() {
+    poiSwatchRow.innerHTML = '';
+    if (!poiTypes.length) { poiSwatchRow.innerHTML = '<span class="empty">Még nincs egyedi jelölő létrehozva.</span>'; return; }
+    poiTypes.forEach(function (pt, idx) {
+      var sw = document.createElement('button');
+      sw.className = 'swatch';
+      if (activeBrush && activeBrush.kind === 'poi' && activeBrush.index === idx) sw.classList.add('active');
+      sw.innerHTML = '<span class="icon-chip">' + pt.icon + '</span>' + pt.label;
+      sw.addEventListener('click', function () { selectBrush({ kind: 'poi', index: idx }, sw); });
+      poiSwatchRow.appendChild(sw);
+    });
+  }
+
+  function selectBrush(brush, el) {
+    activeBrush = brush;
+    document.querySelectorAll('#hex-terrain-swatches .swatch, #hex-poi-swatches .swatch')
+      .forEach(function (s) { s.classList.remove('active'); });
+    if (el) el.classList.add('active');
+    updateHint();
+  }
+
+  function updateHint() {
+    if (!activeBrush) { hint.innerHTML = 'Válassz egy terep-ecsetet vagy egyedi jelölőt lent, aztán kattints (vagy húzd át) a rácson.'; return; }
+    if (activeBrush.kind === 'terrain') {
+      hint.innerHTML = activeBrush.id ? 'Terep-festés aktív: <strong>' + TERRAINS.find(function(t){return t.id===activeBrush.id;}).label + '</strong> — kattints vagy húzd át a mezőkön.' : 'Törlés mód: kattints vagy húzd át a törlendő mezőkön.';
+    } else {
+      hint.innerHTML = 'Jelölő elhelyezése: <strong>' + poiTypes[activeBrush.index].label + '</strong> — kattints egy mezőre (újra kattintva levedd).';
+    }
+  }
+
+  function render() {
+    fitSize();
+    var w = MARGIN * 2 + cols * HEX_W + HEX_W / 2;
+    var h = MARGIN * 2 + HEX_H + (rows - 1) * HEX_H * 0.75;
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    svg.setAttribute('width', w); svg.setAttribute('height', h);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var showCoords = document.getElementById('hex-coords').checked && SIZE >= 12;
+
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        var ctr = hexCenter(c, r);
+        var tId = terrain[key(c, r)];
+        var tDef = TERRAINS.find(function (t) { return t.id === tId; });
+        var poly = ns('polygon');
+        poly.setAttribute('points', hexPoints(ctr.x, ctr.y));
+        poly.style.fill = tDef ? (isDark() ? tDef.colorDark : tDef.color) : '';
+        if (!tDef) poly.setAttribute('fill', 'var(--surface-2)');
+        poly.setAttribute('stroke', 'var(--line)');
+        poly.setAttribute('stroke-width', '1');
+        poly.dataset.c = c; poly.dataset.r = r;
+        poly.style.cursor = 'pointer';
+        attachHexHandlers(poly, c, r);
+        svg.appendChild(poly);
+
+        if (showCoords) {
+          var lbl = ns('text');
+          lbl.setAttribute('x', ctr.x); lbl.setAttribute('y', ctr.y - SIZE * 0.55);
+          lbl.setAttribute('text-anchor', 'middle');
+          lbl.setAttribute('font-size', Math.max(6, SIZE * 0.3).toFixed(1));
+          lbl.setAttribute('font-family', 'var(--mono)');
+          lbl.setAttribute('fill', 'var(--text-dim)');
+          lbl.style.pointerEvents = 'none';
+          lbl.textContent = c + ',' + r;
+          svg.appendChild(lbl);
+        }
+
+        var poi = pois[key(c, r)];
+        if (poi) {
+          var pic = ns('text');
+          pic.setAttribute('x', ctr.x); pic.setAttribute('y', ctr.y + SIZE * 0.32);
+          pic.setAttribute('text-anchor', 'middle');
+          pic.setAttribute('font-size', Math.max(8, SIZE * 0.7).toFixed(1));
+          pic.style.pointerEvents = 'none';
+          pic.textContent = poi.icon;
+          svg.appendChild(pic);
+        }
+      }
+    }
+    renderPoiList();
+    renderExport();
+  }
+
+  function attachHexHandlers(poly, c, r) {
+    poly.addEventListener('pointerdown', function (ev) {
+      ev.preventDefault();
+      isPainting = true;
+      lastPaintKey = key(c, r);
+      svg.setPointerCapture(ev.pointerId);
+      paintHex(c, r);
+    });
+  }
+
+  function paintHex(c, r) {
+    if (!activeBrush) return;
+    var k = key(c, r);
+    if (activeBrush.kind === 'terrain') {
+      if (activeBrush.id === null) delete terrain[k];
+      else terrain[k] = activeBrush.id;
+    } else {
+      var def = poiTypes[activeBrush.index];
+      var existing = pois[k];
+      if (existing && existing.label === def.label && existing.icon === def.icon) delete pois[k];
+      else pois[k] = { label: def.label, icon: def.icon };
+    }
+    render();
+  }
+
+  function stopPainting(ev) {
+    isPainting = false;
+    lastPaintKey = null;
+    if (ev && svg.hasPointerCapture(ev.pointerId)) svg.releasePointerCapture(ev.pointerId);
+  }
+  // Pointer capture on the svg (not the per-hex polygon) means move/up keep arriving here
+  // even though render() destroys and rebuilds every hex polygon on each paint — so a
+  // released button can never get "lost" and leave painting stuck on.
+  svg.addEventListener('pointermove', function (ev) {
+    if (!isPainting || !activeBrush || activeBrush.kind !== 'terrain') return;
+    if (!(ev.buttons & 1)) { stopPainting(ev); return; }
+    var el = document.elementFromPoint(ev.clientX, ev.clientY);
+    if (!el || el.dataset.c === undefined) return;
+    var hc = +el.dataset.c, hr = +el.dataset.r;
+    var k = key(hc, hr);
+    if (k === lastPaintKey) return;
+    lastPaintKey = k;
+    paintHex(hc, hr);
+  });
+  svg.addEventListener('pointerup', stopPainting);
+  svg.addEventListener('pointercancel', stopPainting);
+
+  function hexNeighbors(c, r) {
+    var table = (r % 2 === 0) ? ODDR_EVEN : ODDR_ODD;
+    return table.map(function (d) { return { c: c + d[0], r: r + d[1] }; });
+  }
+
+  // Nearest-neighbor resolution bump (each old hex becomes a factor×factor cluster of new
+  // ones), then two light passes so it doesn't look like a blocky screenshot zoom: border
+  // tiles sometimes borrow a neighboring terrain (rougher coastlines/forest edges), and
+  // tiles fully surrounded by their own terrain occasionally flip to a compatible variant
+  // (a stray mountain in the desert, a copse in the plains) for texture. Never invents a
+  // terrain type that isn't already on the palette.
+  function upscaleGrid(factor) {
+    var newCols = cols * factor, newRows = rows * factor;
+    var base = {};
+    for (var nr = 0; nr < newRows; nr++) {
+      for (var nc = 0; nc < newCols; nc++) {
+        var t = terrain[key(Math.floor(nc / factor), Math.floor(nr / factor))];
+        if (t) base[key(nc, nr)] = t;
+      }
+    }
+    var detailed = {};
+    Object.keys(base).forEach(function (k) {
+      var parts = k.split(','), nc = +parts[0], nr = +parts[1];
+      var t = base[k];
+      var neigh = hexNeighbors(nc, nr).map(function (n) { return base[key(n.c, n.r)]; });
+      var differing = neigh.filter(function (nt) { return nt && nt !== t; });
+      if (differing.length && Math.random() < 0.22) {
+        detailed[k] = differing[Math.floor(Math.random() * differing.length)];
+        return;
+      }
+      var uniform = neigh.length === 6 && neigh.every(function (nt) { return nt === t; });
+      var options = ACCENT_COMPATIBLE[t] || [];
+      if (uniform && options.length && Math.random() < 0.04) {
+        detailed[k] = options[Math.floor(Math.random() * options.length)];
+        return;
+      }
+      detailed[k] = t;
+    });
+    var newPois = {};
+    Object.keys(pois).forEach(function (k) {
+      var parts = k.split(','), sc = +parts[0], sr = +parts[1];
+      newPois[key(sc * factor + Math.floor(factor / 2), sr * factor + Math.floor(factor / 2))] = pois[k];
+    });
+    return { cols: newCols, rows: newRows, terrain: detailed, pois: newPois };
+  }
+
+  function renderPoiList() {
+    poiList.innerHTML = '';
+    var entries = Object.keys(pois);
+    if (!entries.length) { poiList.innerHTML = '<div class="empty">Még nincs elhelyezett jelölő.</div>'; return; }
+    entries.forEach(function (k) {
+      var poi = pois[k];
+      var row = document.createElement('div');
+      row.className = 'row';
+      var main = document.createElement('div'); main.className = 'main';
+      var name = document.createElement('div'); name.className = 'name'; name.textContent = poi.icon + ' ' + poi.label;
+      var sub = document.createElement('div'); sub.className = 'sub'; sub.textContent = '(' + k + ')';
+      main.appendChild(name); main.appendChild(sub);
+      var del = document.createElement('button'); del.className = 'danger'; del.textContent = '🗑';
+      del.addEventListener('click', function () { delete pois[k]; render(); });
+      row.appendChild(main); row.appendChild(del);
+      poiList.appendChild(row);
+    });
+  }
+
+  function renderExport() {
+    var tiles = [];
+    var allKeys = {};
+    Object.keys(terrain).forEach(function (k) { allKeys[k] = true; });
+    Object.keys(pois).forEach(function (k) { allKeys[k] = true; });
+    Object.keys(allKeys).forEach(function (k) {
+      var parts = k.split(','); var c = +parts[0], r = +parts[1];
+      tiles.push({
+        col: c, row: r,
+        terrain: terrain[k] || null,
+        poi: pois[k] ? { label: pois[k].label, icon: pois[k].icon } : null
+      });
+    });
+    tiles.sort(function (a, b) { return a.row - b.row || a.col - b.col; });
+    var payload = { grid: { type: 'hex', orientation: 'pointy-top-offset-rows', columns: cols, rows: rows }, tiles: tiles };
+    exportBox.value = JSON.stringify(payload, null, 2);
+  }
+
+  document.getElementById('hex-regen').addEventListener('click', function () {
+    var newCols = Math.max(4, Math.min(80, +document.getElementById('hex-cols').value || 18));
+    var newRows = Math.max(4, Math.min(60, +document.getElementById('hex-rows').value || 13));
+    if ((Object.keys(terrain).length || Object.keys(pois).length) && !confirm('Ez a rács méretének módosítása törli a jelenlegi festést. Folytatod?')) return;
+    cols = newCols; rows = newRows; terrain = {}; pois = {};
+    render();
+  });
+  document.getElementById('hex-clear').addEventListener('click', function () {
+    if (!Object.keys(terrain).length && !Object.keys(pois).length) return;
+    if (!confirm('Biztosan törlöd a teljes világtérképet?')) return;
+    terrain = {}; pois = {}; render();
+  });
+  document.getElementById('hex-coords').addEventListener('change', render);
+
+  document.getElementById('hex-upscale').addEventListener('click', function () {
+    if (!Object.keys(terrain).length) { alert('Nincs mit felbontani — fess be előbb valamit, vagy tölts be egy térképet.'); return; }
+    var factor = Math.max(2, Math.min(4, +document.getElementById('hex-upscale-factor').value || 2));
+    var result = upscaleGrid(factor);
+    var tileCount = result.cols * result.rows;
+    if (!confirm('Ez lecseréli a jelenlegi térképet egy ' + factor + '×-es felbontású (' + result.cols + '×' + result.rows + ', kb. ' + tileCount + ' mező) verzióra, apró részletekkel feldúsítva. Folytatod?')) return;
+    cols = result.cols; rows = result.rows; terrain = result.terrain; pois = result.pois;
+    document.getElementById('hex-cols').value = cols; document.getElementById('hex-rows').value = rows;
+    render();
+  });
+
+  document.getElementById('hex-example').addEventListener('click', function () {
+    if (!confirm('Ez felülírja a jelenlegi térképet a HD alapállapottal (54×39). Folytatod?')) return;
+    cols = 54; rows = 39; terrain = {}; pois = {};
+    HD_WORLD_ROWS.forEach(function (rowStr, r) {
+      rowStr.split('').forEach(function (ch, c) {
+        if (TERRAIN_CODE[ch]) terrain[key(c, r)] = TERRAIN_CODE[ch];
+      });
+    });
+    HD_WORLD_POIS.forEach(function (p) { pois[key(p[0], p[1])] = { label: p[2], icon: p[3] }; });
+    document.getElementById('hex-cols').value = cols; document.getElementById('hex-rows').value = rows;
+    render();
+  });
+
+  document.getElementById('hex-fullscreen').addEventListener('click', function () {
+    var section = document.getElementById('sub-hex');
+    if (document.fullscreenElement) { document.exitFullscreen(); return; }
+    if (!section.requestFullscreen) { alert('A böngésző itt nem engedélyezi a teljes képernyőt — a térkép enélkül is a rendelkezésre álló helyet tölti ki.'); return; }
+    section.requestFullscreen().catch(function () {
+      alert('A teljes képernyő itt nincs engedélyezve — a térkép enélkül is a rendelkezésre álló helyet tölti ki.');
+    });
+  });
+  document.addEventListener('fullscreenchange', function () { fitCanvasBox(); render(); });
+
+  document.getElementById('hex-poi-add').addEventListener('click', function () {
+    var nameInput = document.getElementById('hex-poi-name');
+    var name = nameInput.value.trim();
+    if (!name) { nameInput.focus(); return; }
+    poiTypes.push({ label: name, icon: chosenIcon });
+    nameInput.value = '';
+    buildPoiSwatches();
+  });
+
+  document.getElementById('hex-copy').addEventListener('click', function () {
+    navigator.clipboard.writeText(exportBox.value).then(function () {
+      var b = document.getElementById('hex-copy'); var old = b.textContent;
+      b.textContent = '✓ Kimásolva'; setTimeout(function () { b.textContent = old; }, 1400);
+    });
+  });
+  document.getElementById('hex-download').addEventListener('click', function () {
+    if (!window.claude || !window.claude.downloads) { alert('Letöltés itt nem elérhető — használd a Másolás gombot.'); return; }
+    window.claude.downloads.save({ filename: 'world-map.json', data: exportBox.value })
+      .catch(function (err) { if (err && err.code === 'declined') return; alert('Nem sikerült a letöltés. Használd a Másolás gombot.'); });
+  });
+  document.getElementById('hex-import-btn').addEventListener('click', function () {
+    var raw = document.getElementById('hex-import').value.trim();
+    if (!raw) return;
+    var data;
+    try { data = JSON.parse(raw); } catch (e) { alert('Ez nem érvényes JSON.'); return; }
+    if (!data.grid || !data.tiles) { alert('Hiányzik a "grid" vagy "tiles" mező.'); return; }
+    if ((Object.keys(terrain).length || Object.keys(pois).length) && !confirm('Ez felülírja a jelenlegi térképet. Folytatod?')) return;
+    cols = Math.max(4, Math.min(80, data.grid.columns || 18)); rows = Math.max(4, Math.min(60, data.grid.rows || 13));
+    document.getElementById('hex-cols').value = cols; document.getElementById('hex-rows').value = rows;
+    terrain = {}; pois = {};
+    var seen = {};
+    poiTypes.forEach(function (pt) { seen[pt.label + '|' + pt.icon] = true; });
+    data.tiles.forEach(function (t) {
+      var k = key(t.col, t.row);
+      if (t.terrain) terrain[k] = t.terrain;
+      if (t.poi) {
+        pois[k] = { label: t.poi.label, icon: t.poi.icon };
+        var sig = t.poi.label + '|' + t.poi.icon;
+        if (!seen[sig]) { seen[sig] = true; poiTypes.push({ label: t.poi.label, icon: t.poi.icon }); }
+      }
+    });
+    buildPoiSwatches();
+    render();
+  });
+
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', render);
+  }
+  new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  window.addEventListener('resize', function () { fitCanvasBox(); render(); });
+
+  buildIconPicker();
+  buildTerrainSwatches();
+  buildPoiSwatches();
+  updateHint();
+  fitCanvasBox();
+  render();
+})();
+
+// ============================================================
+// POINT-CRAWL LOCAL GRAPH (carried over, consolidated here)
+// ============================================================
+(function () {
+  var state = { locations: [], edges: [] };
+  var connectMode = false;
+  var connectSource = null;
+  var dragging = null;
+
+  var svg = document.getElementById('pc-canvas');
+  var hint = document.getElementById('pc-hint');
+  var locList = document.getElementById('pc-loc-list');
+  var edgeList = document.getElementById('pc-edge-list');
+  var exportBox = document.getElementById('pc-export');
+
+  var ACCENT_MAP = {á:'a',é:'e',í:'i',ó:'o',ö:'o',ő:'o',ú:'u',ü:'u',ű:'u',
+    Á:'a',É:'e',Í:'i',Ó:'o',Ö:'o',Ő:'o',Ú:'u',Ü:'u',Ű:'u'};
+
+  function slugify(name) {
+    var base = name.toLowerCase().split('').map(function (c) { return ACCENT_MAP[c] || c; }).join('')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    if (!base) base = 'helyszin';
+    var candidate = base, n = 2;
+    while (state.locations.some(function (l) { return l.id === candidate; })) { candidate = base + '-' + n; n++; }
+    return candidate;
+  }
+  function ns(tag) { return document.createElementNS('http://www.w3.org/2000/svg', tag); }
+  function truncate(s, n) { return s.length > n ? s.slice(0, n - 1) + '…' : s; }
+  function escapeHtml(s) { return s.replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+  function updateHint() {
+    if (connectMode) hint.innerHTML = connectSource ? 'Kattints egy <strong>másik</strong> helyszínre az összekötéshez.' : 'Összekötés mód: kattints egy helyszínre az induláshoz.';
+    else hint.innerHTML = 'Kattints egy <strong>üres</strong> pontra új helyszín létrehozásához, vagy egy meglévőre a szerkesztéshez. Húzva mozgathatod.';
+  }
+
+  function render() {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    state.locations.forEach(function (loc) {
+      if (!loc.parentId) return;
+      var parent = state.locations.find(function (l) { return l.id === loc.parentId; });
+      if (!parent) return;
+      var line = ns('line');
+      line.setAttribute('x1', loc.x); line.setAttribute('y1', loc.y);
+      line.setAttribute('x2', parent.x); line.setAttribute('y2', parent.y);
+      line.setAttribute('stroke', 'var(--thread)'); line.setAttribute('stroke-width', '1.4');
+      line.setAttribute('stroke-dasharray', '4 3'); line.setAttribute('opacity', '0.7');
+      svg.appendChild(line);
+    });
+    state.edges.forEach(function (e) {
+      var a = state.locations.find(function (l) { return l.id === e.from; });
+      var b = state.locations.find(function (l) { return l.id === e.to; });
+      if (!a || !b) return;
+      var line = ns('line');
+      line.setAttribute('x1', a.x); line.setAttribute('y1', a.y);
+      line.setAttribute('x2', b.x); line.setAttribute('y2', b.y);
+      line.setAttribute('stroke', 'var(--state)'); line.setAttribute('stroke-width', '2');
+      if (!e.bidirectional) line.setAttribute('stroke-dasharray', '2 4');
+      svg.appendChild(line);
+      if (e.method) {
+        var label = ns('text');
+        label.setAttribute('x', (a.x + b.x) / 2); label.setAttribute('y', (a.y + b.y) / 2 - 6);
+        label.setAttribute('text-anchor', 'middle'); label.setAttribute('font-size', '10');
+        label.setAttribute('font-family', 'var(--mono)'); label.setAttribute('fill', 'var(--text-dim)');
+        label.textContent = e.method;
+        svg.appendChild(label);
+      }
+    });
+    state.locations.forEach(function (loc) {
+      var g = ns('g');
+      g.setAttribute('transform', 'translate(' + loc.x + ',' + loc.y + ')');
+      var circle = ns('circle');
+      circle.setAttribute('r', '26');
+      circle.setAttribute('fill', 'var(--surface-2)');
+      circle.setAttribute('stroke', connectSource === loc.id ? 'var(--thread)' : 'var(--content)');
+      circle.setAttribute('stroke-width', connectSource === loc.id ? '3' : '2');
+      g.appendChild(circle);
+      var text = ns('text');
+      text.setAttribute('text-anchor', 'middle'); text.setAttribute('y', '4');
+      text.setAttribute('font-size', '12'); text.setAttribute('font-weight', '600');
+      text.setAttribute('fill', 'var(--text)'); text.style.pointerEvents = 'none';
+      text.textContent = truncate(loc.name, 12);
+      g.appendChild(text);
+      g.style.cursor = 'grab';
+      g.addEventListener('pointerdown', function (ev) { onNodePointerDown(ev, loc.id); });
+      svg.appendChild(g);
+    });
+    renderLists();
+    renderExport();
+  }
+
+  function renderLists() {
+    locList.innerHTML = '';
+    if (!state.locations.length) locList.innerHTML = '<div class="empty">Még nincs helyszín.</div>';
+    state.locations.forEach(function (loc) {
+      var row = document.createElement('div'); row.className = 'row';
+      var main = document.createElement('div'); main.className = 'main';
+      var nameEl = document.createElement('div'); nameEl.className = 'name'; nameEl.textContent = loc.name;
+      var subEl = document.createElement('div'); subEl.className = 'sub';
+      var parent = state.locations.find(function (l) { return l.id === loc.parentId; });
+      subEl.textContent = (parent ? 'része: ' + parent.name + ' · ' : '') + loc.id;
+      main.appendChild(nameEl); main.appendChild(subEl);
+      var editBtn = document.createElement('button'); editBtn.textContent = '✎';
+      editBtn.addEventListener('click', function () { openLocationForm(loc); });
+      row.appendChild(main); row.appendChild(editBtn);
+      locList.appendChild(row);
+    });
+    edgeList.innerHTML = '';
+    if (!state.edges.length) edgeList.innerHTML = '<div class="empty">Még nincs útvonal.</div>';
+    state.edges.forEach(function (e) {
+      var a = state.locations.find(function (l) { return l.id === e.from; });
+      var b = state.locations.find(function (l) { return l.id === e.to; });
+      var row = document.createElement('div'); row.className = 'row';
+      var main = document.createElement('div'); main.className = 'main';
+      var nameEl = document.createElement('div'); nameEl.className = 'name';
+      nameEl.textContent = (a ? a.name : '?') + (e.bidirectional ? ' ↔ ' : ' → ') + (b ? b.name : '?');
+      var subEl = document.createElement('div'); subEl.className = 'sub'; subEl.textContent = e.method || 'nincs megadva mód';
+      main.appendChild(nameEl); main.appendChild(subEl);
+      var delBtn = document.createElement('button'); delBtn.className = 'danger'; delBtn.textContent = '🗑';
+      delBtn.addEventListener('click', function () { state.edges = state.edges.filter(function (x) { return x !== e; }); render(); });
+      row.appendChild(main); row.appendChild(delBtn);
+      edgeList.appendChild(row);
+    });
+  }
+
+  function renderExport() {
+    var payload = {
+      locations: state.locations.map(function (l) {
+        return { id: l.id, name: l.name, description: l.description || '', parent_location_id: l.parentId || null, _layout: { x: Math.round(l.x), y: Math.round(l.y) } };
+      }),
+      location_edges: state.edges.map(function (e) {
+        return { from_location_id: e.from, to_location_id: e.to, traversal_method: e.method || null, is_bidirectional: !!e.bidirectional };
+      })
+    };
+    exportBox.value = JSON.stringify(payload, null, 2);
+  }
+
+  function svgPoint(ev) {
+    var rect = svg.getBoundingClientRect();
+    var vb = svg.viewBox.baseVal;
+    return { x: (ev.clientX - rect.left) / rect.width * vb.width + vb.x, y: (ev.clientY - rect.top) / rect.height * vb.height + vb.y };
+  }
+
+  svg.addEventListener('pointerdown', function (ev) {
+    if (ev.target !== svg) return;
+    if (connectMode) return;
+    openLocationForm(null, svgPoint(ev));
+  });
+
+  function onNodePointerDown(ev, id) {
+    ev.stopPropagation();
+    if (connectMode) {
+      if (!connectSource) { connectSource = id; render(); updateHint(); }
+      else if (connectSource !== id) openEdgeForm(connectSource, id);
+      return;
+    }
+    dragging = { id: id, moved: false, startX: ev.clientX, startY: ev.clientY };
+    var moveHandler = function (mv) {
+      var dx = mv.clientX - dragging.startX, dy = mv.clientY - dragging.startY;
+      if (Math.abs(dx) + Math.abs(dy) > 4) dragging.moved = true;
+      if (dragging.moved) {
+        var p = svgPoint(mv);
+        var loc = state.locations.find(function (l) { return l.id === dragging.id; });
+        loc.x = p.x; loc.y = p.y; render();
+      }
+    };
+    var upHandler = function () {
+      window.removeEventListener('pointermove', moveHandler);
+      window.removeEventListener('pointerup', upHandler);
+      if (!dragging.moved) { var loc = state.locations.find(function (l) { return l.id === dragging.id; }); openLocationForm(loc); }
+      dragging = null;
+    };
+    window.addEventListener('pointermove', moveHandler);
+    window.addEventListener('pointerup', upHandler);
+  }
+
+  document.getElementById('pc-connect').addEventListener('click', function () {
+    connectMode = !connectMode; connectSource = null;
+    this.classList.toggle('active', connectMode);
+    updateHint(); render();
+  });
+  document.getElementById('pc-clear').addEventListener('click', function () {
+    if (!state.locations.length && !state.edges.length) return;
+    if (!confirm('Biztosan törlöd az összes helyszínt és útvonalat?')) return;
+    state = { locations: [], edges: [] }; render();
+  });
+  document.getElementById('pc-example').addEventListener('click', loadExample);
+
+  function openLocationForm(loc, atPoint) {
+    var editing = !!loc;
+    var overlay = document.createElement('div'); overlay.className = 'overlay';
+    var modal = document.createElement('div'); modal.className = 'modal';
+    modal.innerHTML =
+      '<h3>' + (editing ? 'Helyszín szerkesztése' : 'Új helyszín') + '</h3>' +
+      '<label>Név</label><input id="f-name" type="text">' +
+      '<label>Leírás (opcionális)</label><textarea id="f-desc" rows="3"></textarea>' +
+      '<label>Ennek a része (opcionális)</label><select id="f-parent"><option value="">— nincs —</option></select>' +
+      '<div class="actions" id="f-actions"></div>';
+    overlay.appendChild(modal); document.body.appendChild(overlay);
+    var nameInput = modal.querySelector('#f-name'), descInput = modal.querySelector('#f-desc'), parentSelect = modal.querySelector('#f-parent');
+    state.locations.forEach(function (l) {
+      if (editing && l.id === loc.id) return;
+      var opt = document.createElement('option'); opt.value = l.id; opt.textContent = l.name; parentSelect.appendChild(opt);
+    });
+    if (editing) { nameInput.value = loc.name; descInput.value = loc.description || ''; parentSelect.value = loc.parentId || ''; }
+    var actions = modal.querySelector('#f-actions');
+    var saveBtn = document.createElement('button'); saveBtn.className = 'primary'; saveBtn.textContent = 'Mentés';
+    var cancelBtn = document.createElement('button'); cancelBtn.textContent = 'Mégse';
+    actions.appendChild(cancelBtn);
+    if (editing) {
+      var delBtn = document.createElement('button'); delBtn.className = 'danger'; delBtn.textContent = 'Törlés';
+      delBtn.addEventListener('click', function () {
+        state.locations = state.locations.filter(function (l) { return l.id !== loc.id; });
+        state.locations.forEach(function (l) { if (l.parentId === loc.id) l.parentId = null; });
+        state.edges = state.edges.filter(function (e) { return e.from !== loc.id && e.to !== loc.id; });
+        if (connectSource === loc.id) connectSource = null;
+        document.body.removeChild(overlay); render();
+      });
+      actions.appendChild(delBtn);
+    }
+    actions.appendChild(saveBtn);
+    cancelBtn.addEventListener('click', function () { document.body.removeChild(overlay); });
+    saveBtn.addEventListener('click', function () {
+      var name = nameInput.value.trim();
+      if (!name) { nameInput.focus(); return; }
+      if (editing) { loc.name = name; loc.description = descInput.value.trim(); loc.parentId = parentSelect.value || null; }
+      else state.locations.push({ id: slugify(name), name: name, description: descInput.value.trim(), parentId: parentSelect.value || null, x: atPoint ? atPoint.x : 400, y: atPoint ? atPoint.y : 240 });
+      document.body.removeChild(overlay); render();
+    });
+    nameInput.focus();
+  }
+
+  function openEdgeForm(fromId, toId) {
+    var a = state.locations.find(function (l) { return l.id === fromId; });
+    var b = state.locations.find(function (l) { return l.id === toId; });
+    var overlay = document.createElement('div'); overlay.className = 'overlay';
+    var modal = document.createElement('div'); modal.className = 'modal';
+    modal.innerHTML =
+      '<h3>Útvonal: ' + escapeHtml(a.name) + ' → ' + escapeHtml(b.name) + '</h3>' +
+      '<label>Hogyan lehet megtenni (opcionális)</label><input id="f-method" type="text" placeholder="pl. út, ösvény, ajtó">' +
+      '<div class="checkline"><input id="f-bidir" type="checkbox" checked><label for="f-bidir">Mindkét irányba jár</label></div>' +
+      '<div class="actions" id="f-actions"></div>';
+    overlay.appendChild(modal); document.body.appendChild(overlay);
+    var actions = modal.querySelector('#f-actions');
+    var cancelBtn = document.createElement('button'); cancelBtn.textContent = 'Mégse';
+    var saveBtn = document.createElement('button'); saveBtn.className = 'primary'; saveBtn.textContent = 'Összekötés';
+    actions.appendChild(cancelBtn); actions.appendChild(saveBtn);
+    function close() { document.body.removeChild(overlay); connectSource = null; render(); updateHint(); }
+    cancelBtn.addEventListener('click', close);
+    saveBtn.addEventListener('click', function () {
+      state.edges.push({ from: fromId, to: toId, method: modal.querySelector('#f-method').value.trim(), bidirectional: modal.querySelector('#f-bidir').checked });
+      close();
+    });
+    modal.querySelector('#f-method').focus();
+  }
+
+  function loadExample() {
+    if (state.locations.length && !confirm('Ez felülírja a jelenlegi térképet. Folytatod?')) return;
+    state = {
+      locations: [
+        { id: 'ut', name: 'A nyugati út', description: 'A szekér útja Westwatch felé.', parentId: null, x: 110, y: 240 },
+        { id: 'westwatch', name: 'Westwatch', description: 'Palánkkal védett határőrs.', parentId: null, x: 320, y: 240 },
+        { id: 'westwatch-grogran', name: "Grogran's Barrel", description: 'Grogran kocsmája.', parentId: 'westwatch', x: 320, y: 340 },
+        { id: 'hamis-tetthely', name: 'A hamis tetthely', description: 'Rendezett bűntény-színhely.', parentId: null, x: 540, y: 160 },
+        { id: 'lorienvale', name: 'Lorienvale széle', description: 'A crimson erdő pereme.', parentId: null, x: 680, y: 240 }
+      ],
+      edges: [
+        { from: 'ut', to: 'westwatch', method: 'szekérút', bidirectional: true },
+        { from: 'westwatch', to: 'hamis-tetthely', method: 'nyomkövetés', bidirectional: true },
+        { from: 'hamis-tetthely', to: 'lorienvale', method: 'gyanú, nincs kitaposva', bidirectional: false }
+      ]
+    };
+    render();
+  }
+
+  document.getElementById('pc-copy').addEventListener('click', function () {
+    navigator.clipboard.writeText(exportBox.value).then(function () {
+      var b = document.getElementById('pc-copy'); var old = b.textContent;
+      b.textContent = '✓ Kimásolva'; setTimeout(function () { b.textContent = old; }, 1400);
+    });
+  });
+  document.getElementById('pc-download').addEventListener('click', function () {
+    if (!window.claude || !window.claude.downloads) { alert('Letöltés itt nem elérhető — használd a Másolás gombot.'); return; }
+    window.claude.downloads.save({ filename: 'local-map.json', data: exportBox.value })
+      .catch(function (err) { if (err && err.code === 'declined') return; alert('Nem sikerült a letöltés. Használd a Másolás gombot.'); });
+  });
+  document.getElementById('pc-import-btn').addEventListener('click', function () {
+    var raw = document.getElementById('pc-import').value.trim();
+    if (!raw) return;
+    var data; try { data = JSON.parse(raw); } catch (e) { alert('Ez nem érvényes JSON.'); return; }
+    if (!data.locations || !data.location_edges) { alert('Hiányzik a "locations" vagy "location_edges" mező.'); return; }
+    if (state.locations.length && !confirm('Ez felülírja a jelenlegi térképet. Folytatod?')) return;
+    state = {
+      locations: data.locations.map(function (l, i) {
+        return { id: l.id, name: l.name, description: l.description || '', parentId: l.parent_location_id || null,
+          x: (l._layout && l._layout.x) || (120 + (i % 5) * 140), y: (l._layout && l._layout.y) || (120 + Math.floor(i / 5) * 140) };
+      }),
+      edges: data.location_edges.map(function (e) { return { from: e.from_location_id, to: e.to_location_id, method: e.traversal_method || '', bidirectional: !!e.is_bidirectional }; })
+    };
+    render();
+  });
+
+  updateHint();
+  render();
+})();
+</script>
