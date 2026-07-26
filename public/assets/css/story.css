@@ -194,6 +194,33 @@ h1 {
 
 .story-panel figure img { width: 100%; height: auto; }
 
+.placeholder-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1672 / 941;
+  padding: 2rem;
+  color: var(--muted);
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.025) 0 2px, transparent 2px 14px),
+    #0c0a08;
+  font-family: var(--display);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+  text-align: center;
+}
+.placeholder-art span {
+  display: block;
+  margin-bottom: .75rem;
+  color: var(--ember-hot);
+  font-family: var(--sans);
+  font-size: .6rem;
+  font-weight: 900;
+  letter-spacing: .2em;
+  font-style: normal;
+}
+
 .story-panel figcaption {
   position: absolute;
   right: 0;
