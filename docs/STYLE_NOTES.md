@@ -100,6 +100,21 @@ Rendering it in English without em dashes (see house constraint above):
 - For a reaction that produces a thought, a colon keeps the two folded
   together: "He smiled: *the Crown's hero, come home.*"
 
+**Refinement, from the Forest's End draft.** The aside frequently does not
+add information. It takes information back, downgrading the claim the
+sentence just made, and the comedy lives in the gap:
+
+- "Egy őr állt, vagy legalábbis álló helyzetben volt kipeckelve a
+  lándzsájára" (a guard stood there, or at any rate was propped upright on
+  his spear)
+- "egy gyors végigmérés után, feltételezhetően látta hogy nem a várnagy
+  az, kicsit csalódottan punnyadt vissza"
+- "mormogott valamit nem túl nagy meggyőződéssel, vagy megint csak
+  visszaaludt"
+
+Three in a single paragraph. The pattern is assert, then quietly retract.
+Never state the deflated version directly; let the aside do it.
+
 ## 5. On revision, diction moves toward the concrete, never the reverse
 
 Every hands-on revision pass so far has swapped a generic word for a more
@@ -150,3 +165,39 @@ be going further in.
 reports what the character can't see in himself: "and, hardly knowing he
 did, quickened his stride" ("szinte tudatalatt"). The body gives him away
 to us, not to him. Then the last line drops back inside to close.
+
+## 7. Facts arrive by subtraction
+
+A thing is registered by what stopped being there, not by what appeared.
+
+Example (Forest's End draft): "Csak onnan látta meg hogy az erődhöz ért
+hogy a fénylő hold eltűnt a massziv őrbástya mögött" (the only way he knew
+he'd reached the fort was that the bright moon went out behind the massive
+watchtower). He never sees the fort. He notices the moon stop being there,
+and the sentence delivers the dark by making the reader work out the same
+subtraction he did.
+
+This is the prelude's whole architecture in miniature, so lean on it. The
+climax is an absence: Garret walks fifty-one miles to a village that is
+not there. The Hollows are people-shaped absences. Registering arrival as
+a subtraction at the gate rhymes forward to a subtraction at Suncross, and
+the earlier one makes the later one feel inevitable instead of arbitrary.
+
+## 8. True things hidden inside a list of lies
+
+When information the reader needs has to reach them before the characters
+believe it, bury it in a list of tavern rumors and camouflage it with one
+obviously absurd entry. The absurd item discredits everything next to it,
+and the speaker's own ranking runs opposite to the truth.
+
+Example (the guard at Forest's End): the desert came alive and carried off
+their houses; nothing grows in the south anymore; the dead get up and walk
+among the living; the sand gives birth to them; the queen dances naked in
+the tavern next door. Four of those five are true. The fifth is what makes
+all of them dismissable, and the guard closes with "each one harder to
+swallow than the last," which is exactly backwards.
+
+The reader gets the truth, the characters get a joke, and nobody had to be
+told anything. Keep the absurd entry last, and keep it cheap and local
+(a naked queen, not a cosmic claim), so it reads as the punchline rather
+than as another rumor.
