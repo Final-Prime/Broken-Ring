@@ -1,31 +1,44 @@
-# Style Notes — Fifty-One Miles Prose
+# Style Notes: Fifty-One Miles Prose
 
 A running log of prose patterns worth deliberately reusing across panels,
 captured as they turn up during drafting so they don't get lost. Not a
-style guide to follow mechanically — a checklist of moves that already
+style guide to follow mechanically, but a checklist of moves that already
 worked once, to actively look for again.
 
-## 1. Escalating triple negation → "but" turn
+## House constraint: no em dashes
 
-Three parallel negated claims (rule of three + anaphora), the third pushed
-a level lower than the first two (signaled with "even"), then reversed by
-a "but" into the one thing that actually matters. The three denials tune
-the reader's ear so the turn lands harder.
+Do not use em dashes (`—`) in published prose. Heavy em dash use is widely
+read as a tell that text was machine-written, and this story goes out
+under a human byline. This applies to the story pages and to this file.
+
+This does not cancel pattern 4 below. The dash-set-off beat is Daniel's
+own move, taken from his Hungarian drafts, and it stays. Only the
+character changes. Use a comma pair, a colon, parentheses, or a sentence
+break to do the same job.
+
+Ellipses (`...`) are his and stay. Hyphens in compounds are fine.
+
+## 1. Escalating triple negation into a "but" turn
+
+Three parallel negated claims (rule of three plus anaphora), the third
+pushed a level lower than the first two (signaled with "even"), then
+reversed by a "but" into the one thing that actually matters. The three
+denials tune the reader's ear so the turn lands harder.
 
 Example (Panel 1 opening):
 
 > Not the strongest arm in his year. Not the sharpest blade. Not even a
-> name worth remembering. But he was alive when it ended — and that alone
+> name worth remembering. But he was alive when it ended, and that alone
 > couldn't be said of everyone.
 
-Reuse flagged: a Suncross echo later — same skeleton, loss-register
+Reuse flagged: a Suncross echo later, same skeleton, loss-register
 instead of modesty-register ("not X, not Y, not even Z" building toward
 "only sand," instead of building toward survival).
 
 Confirmed independently, in Hungarian, in an unrelated scene: "erre nem
 fognak elfordulni a lányok, még Sylma sem" ("the girls wouldn't turn away
-from this — not even Sylma"). Same move in a different language and a
-different beat — the real mechanic isn't "even = a lower floor," it's
+from this, not even Sylma"). Same move in a different language and a
+different beat. The real mechanic isn't "even = a lower floor," it's
 "even = a jump from a general category to one named, specific instance."
 That's what makes the third item land.
 
@@ -35,13 +48,13 @@ Syntactic iconicity: the shape of the sentence enacts the thing it
 describes, instead of just stating it.
 
 - **Withholding**: the Panel 1 opening never names Garret until right
-  after the "but" turn — the sentence itself "forgets" his name for
+  after the "but" turn. The sentence itself "forgets" his name for
   exactly as long as it claims nobody else remembered it.
 - **Slow unfolding**: the long accumulating clause describing the walk
   out of the capital ("as his friends slowly got lost one by one at road
   forks... he realised slowly... he was finally free") stretches across
-  one long sentence — the sentence's own pacing performs the slowness of
-  the realization instead of describing it from outside.
+  one long sentence, so the sentence's own pacing performs the slowness
+  of the realization instead of describing it from outside.
 
 Reuse: on every pass, when a sentence names a felt quality (slowness,
 forgetting, repetition, being lost, losing count, etc.), check whether
@@ -52,69 +65,77 @@ to wait for.
 ## 3. "Maybe" chains arrive in beats, not one summary
 
 When imagining something happening offscreen, the guesses land as short,
-separate "maybe" clauses — each one its own small concrete image —
-instead of one sentence that summarizes the possibilities.
+separate "maybe" clauses, each one its own small concrete image, instead
+of one sentence that summarizes the possibilities.
 
 Example (English, Panel 1): "Maybe that was luck. Maybe it was simpler:
 the Crown of Elenvale had no war to send him to..."
 
 Example (Hungarian draft, extended on revision from two beats to three):
 "Talán épp most takarítják be a termést? Talán már kopárak a földek és
-csak kávéban a kezükben ücsörögnek a verandán..." — the second pass added
+csak kávéban a kezükben ücsörögnek a verandán..." The second pass added
 a third beat (the bare fields) instead of compressing the first two. The
 instinct on revision is to add another concrete "maybe," not to summarize.
 
-## 4. Action folded inside a dash-set-off beat
+## 4. Action folded inside a set-off beat
 
-A thought-tag or reaction doesn't just sit at the end of a line — it's
-wrapped in dashes with a small physical action folded inside it, so the
-scene keeps moving without leaving the flow of interior monologue.
+A thought-tag or reaction doesn't just sit at the end of a line. It gets
+set off from the sentence with a small physical action folded inside it,
+so the scene keeps moving without leaving the flow of interior monologue.
 
-Example: "— gondolta, ahogy átlépdelt egy takaros kőhídon, ami egy
-csermely felett ágaskodott —" (he thought, as he stepped across a tidy
+Example: "- gondolta, ahogy átlépdelt egy takaros kőhídon, ami egy
+csermely felett ágaskodott -" (he thought, as he stepped across a tidy
 stone bridge arched over a brook), and later in the same draft, doing the
-same job for a reaction instead of a thought-tag: "— mosolyodott el —"
-(— he smiled —).
+same job for a reaction instead of a thought-tag: "- mosolyodott el -"
+(he smiled).
 
-Two instances inside one paragraph — a real recurring habit, not a
+Two instances inside one paragraph, so a real recurring habit, not a
 one-off.
 
-## 5. On revision, diction moves toward the concrete — never the reverse
+Rendering it in English without em dashes (see house constraint above):
+
+- After a question, the bare tag reads cleanly and is standard for
+  unquoted interior monologue: "...on the Crown's own orders? he thought,
+  crossing a tidy stone bridge that reared over a brook."
+- For a reaction that produces a thought, a colon keeps the two folded
+  together: "He smiled: *the Crown's hero, come home.*"
+
+## 5. On revision, diction moves toward the concrete, never the reverse
 
 Every hands-on revision pass so far has swapped a generic word for a more
 specific, more physically-grounded one, never the other direction: "his
-year" → "his battalion"; "ülnek" (sit) → "ücsörögnek" (sit around,
-idling); "letudva" (gotten it out of the way) → "maguk mögött tudva"
-(knowing it behind them); "vöröses" (reddish, a static adjective) →
-"vörösre színeződött" (having colored themselves red — a process, not a
-state).
+year" to "his battalion"; "ülnek" (sit) to "ücsörögnek" (sit around,
+idling); "letudva" (gotten it out of the way) to "maguk mögött tudva"
+(knowing it behind them); "vöröses" (reddish, a static adjective) to
+"vörösre színeződött" (having colored themselves red, a process rather
+than a state).
 
 Default to the more concrete, more specific, more physically-grounded
 option whenever there's a choice between two roughly-equivalent words.
 
-## 6. Two registers — and a one-way ladder between them
+## 6. Two registers, and a one-way ladder between them
 
 The prose runs two distinct voices, and the gap between them is the
 characterization, not a contradiction to iron out.
 
-- **Outside narrator** — assessing, past tense, distant, and inclined to
-  undersell: "not even a name worth remembering," "he was alive when it
+- **Outside narrator**: assessing, past tense, distant, and inclined to
+  undersell. "Not even a name worth remembering," "he was alive when it
   ended."
-- **Inner voice** — immediate, present-leaning, self-flattering, asking
-  questions it can't answer: "What would they be doing right about now?",
+- **Inner voice**: immediate, present-leaning, self-flattering, asking
+  questions it can't answer. "What would they be doing right about now?",
   "the Crown's hero, come home."
 
 The narrator never claims Garret is a hero. Garret does. A modest outside
-and an inflated inside isn't an inconsistency — a nobody who is already
+and an inflated inside isn't an inconsistency. A nobody who is already
 standing in front of the girls in his own head *is* the character.
 
-**The climb is one-way.** Within a passage the movement runs outward →
+**The climb is one-way.** Within a passage the movement runs outward to
 inward and keeps getting deeper; it does not step back out mid-climb:
 
 1. External: "Garret walked the wide path..."
 2. Free indirect: "What would they be doing right about now? Maybe
    bringing in the harvest."
-3. Dash-tagged thought: "— he thought, crossing a tidy stone bridge —"
+3. Tagged thought: "he thought, crossing a tidy stone bridge..."
 4. Italic direct thought: "*the Crown's hero, come home.*"
 
 Watch this especially when translating from the Hungarian drafts, which
