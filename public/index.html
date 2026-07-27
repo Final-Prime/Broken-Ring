@@ -1,195 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Broken Ring — Chapter 01: Blood and Timber</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-dark: #0a0a0c;
-      --card-bg: #141419;
-      --trythium-red: #dc2626;
-      --trythium-glow: rgba(220, 38, 38, 0.4);
-      --gold-accent: #d97706;
-      --text-main: #e2e8f0;
-      --text-muted: #94a3b8;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-    header {
-      width: 100%;
-      padding: 2.5rem 1rem;
-      background: linear-gradient(180deg, rgba(220,38,38,0.15) 0%, transparent 100%);
-      border-bottom: 1px solid rgba(220,38,38,0.2);
-      text-align: center;
-    }
-    h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 2.5rem;
-      letter-spacing: 2px;
-      color: #fff;
-      text-shadow: 0 0 15px var(--trythium-glow);
-    }
-    .subtitle {
-      color: var(--trythium-red);
-      font-family: 'Cinzel', serif;
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .container {
-      max-width: 900px;
-      width: 100%;
-      padding: 2rem 1rem;
-    }
-    .comic-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      margin-top: 1.5rem;
-    }
-    .comic-panel {
-      background: var(--card-bg);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-    .comic-panel:hover {
-      border-color: var(--trythium-red);
-      box-shadow: 0 0 25px var(--trythium-glow);
-    }
-    .panel-image-placeholder {
-      width: 100%;
-      height: 350px;
-      background: #1e1e24;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: var(--text-muted);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      position: relative;
-    }
-    .panel-number {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: var(--trythium-red);
-      color: #fff;
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 4px;
-      font-size: 0.85rem;
-    }
-    .panel-content {
-      padding: 1.5rem;
-    }
-    .caption {
-      font-style: italic;
-      color: var(--gold-accent);
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-      border-left: 3px solid var(--gold-accent);
-      padding-left: 0.75rem;
-    }
-    .dialogue-box {
-      background: rgba(0,0,0,0.3);
-      padding: 0.75rem 1rem;
-      border-radius: 6px;
-      margin-bottom: 0.75rem;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    .speaker {
-      font-weight: 700;
-      color: var(--trythium-red);
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .speech {
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      color: #f1f5f9;
-      margin-top: 0.2rem;
-    }
-    footer {
-      margin-top: 3rem;
-      padding: 2rem;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      width: 100%;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>THE BROKEN RING</h1>
-    <div class="subtitle">Chapter 01: Blood and Timber</div>
-  </header>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#090706">
+    <meta name="description" content="The Broken Ring — a Final Prime dark fantasy chronicle. Read the public story and explore the world map.">
+    <title>The Broken Ring | Final Prime</title>
+    <link rel="preload" href="assets/images/title-westwatch.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="stylesheet" href="assets/css/site.css">
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
 
-  <main class="container">
-    <div class="comic-grid">
-      
-        <article class="comic-panel">
-          <div class="panel-image-placeholder">
-            <span class="panel-number">PANEL 1</span>
-            <p>📷 [Wide Establishment Shot]</p>
-            <p style="font-size:0.85rem; padding:1rem; text-align:center;">The muddy Westwatch road in Elenvale under a torrential dusk rain. A royal Crown crimsonwood caravan sits overturned, its red timber glowing faintly under rain-swept torches.</p>
-          </div>
-          <div class="panel-content">
-            <div class="caption">The Third Empty Dawn — The road to Westwatch is quiet, save for the rain and the scent of iron and wet cedar.</div>
-            
-            <div class="dialogue-box">
-              <div class="speaker">Captain Warrick</div>
-              <div class="speech">"Hold your torches high. That timber belongs to the Red Fleet... or what's left of it."</div>
-            </div>
-            
-          </div>
-        </article>
-        
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Broken Ring home">
+        <span class="brand-mark" aria-hidden="true">BR</span>
+        <span>BROKEN RING</span>
+      </a>
+      <div class="build-state">
+        <i aria-hidden="true"></i>
+        <span>PUBLIC BUILD</span>
+      </div>
+    </header>
 
-        <article class="comic-panel">
-          <div class="panel-image-placeholder">
-            <span class="panel-number">PANEL 2</span>
-            <p>📷 [Medium Action Shot]</p>
-            <p style="font-size:0.85rem; padding:1rem; text-align:center;">Captain Warrick draws his steel broadsword, eyes narrowed as shadows shift along the treeline of Lorienvale.</p>
+    <main>
+      <section class="hero">
+        <div class="sigil" aria-hidden="true">
+          <span class="sigil-orbit orbit-a"></span>
+          <span class="sigil-orbit orbit-b"></span>
+          <span class="sigil-core"></span>
+          <span class="sigil-break"></span>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">A FINAL PRIME CHRONICLE</p>
+          <h1><span>THE BROKEN RING</span><span>A ring, broken. A world, sealed.</span></h1>
+          <p class="premise">Millions of years ago, something fell from beyond the sky and shattered these mountains into a ring. Everything since has grown in the crater it left behind.</p>
+          <div class="actions">
+            <button type="button" class="primary-action" disabled aria-disabled="true">
+              <span>PLAY</span>
+              <small>Interactive play — coming soon</small>
+            </button>
+            <a class="text-action" href="story.html">Read Chapter 01 <span aria-hidden="true">→</span></a>
           </div>
-          <div class="panel-content">
-            <div class="caption">A false-flag ambush leaves no survivors — only cold tracks and unrefined Trythium resonance.</div>
-            
-            <div class="dialogue-box">
-              <div class="speaker">Elenvale Guardian</div>
-              <div class="speech">"Something isn't right. The ties weren't cut by raiders... they were unbuckled from the inside."</div>
-            </div>
-            
-          </div>
-        </article>
-        
-    </div>
-  </main>
+        </div>
+      </section>
 
-  <footer>
-    <p>The Broken Ring &copy; 2026 Daniel Kenessy. All rights reserved.</p>
-    <p>Powered by Final Prime Lossless Game Engine & Play-to-Comic Pipeline.</p>
-  </footer>
-</body>
+      <section class="status-panel">
+        <h2>Where things stand</h2>
+        <p>This repository holds the reviewed public build only: the finished story chapters and world reference cleared for release. Draft lore, DM-only secrets, and in-progress work stay in the private gameplay lab.</p>
+        <dl>
+          <div><dt>Chapter 01 · The Road to Westwatch</dt><dd><a class="text-action" href="story.html">Read →</a></dd></div>
+          <div><dt>World Map &amp; Lore Dashboard</dt><dd><a class="text-action" href="dashboard.html">Open →</a></dd></div>
+          <div><dt>Chapter 02</dt><dd>In development</dd></div>
+          <div><dt>Interactive play</dt><dd>Not yet available</dd></div>
+        </dl>
+      </section>
+    </main>
+
+    <footer>
+      <span>FINAL PRIME</span>
+      <span>BROKEN RING</span>
+      <span>© 2026 DANIEL KENESSY</span>
+    </footer>
+    <script src="assets/js/app.js"></script>
+  </body>
 </html>
