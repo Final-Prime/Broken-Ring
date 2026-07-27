@@ -91,3 +91,41 @@ state).
 
 Default to the more concrete, more specific, more physically-grounded
 option whenever there's a choice between two roughly-equivalent words.
+
+## 6. Two registers — and a one-way ladder between them
+
+The prose runs two distinct voices, and the gap between them is the
+characterization, not a contradiction to iron out.
+
+- **Outside narrator** — assessing, past tense, distant, and inclined to
+  undersell: "not even a name worth remembering," "he was alive when it
+  ended."
+- **Inner voice** — immediate, present-leaning, self-flattering, asking
+  questions it can't answer: "What would they be doing right about now?",
+  "the Crown's hero, come home."
+
+The narrator never claims Garret is a hero. Garret does. A modest outside
+and an inflated inside isn't an inconsistency — a nobody who is already
+standing in front of the girls in his own head *is* the character.
+
+**The climb is one-way.** Within a passage the movement runs outward →
+inward and keeps getting deeper; it does not step back out mid-climb:
+
+1. External: "Garret walked the wide path..."
+2. Free indirect: "What would they be doing right about now? Maybe
+   bringing in the harvest."
+3. Dash-tagged thought: "— he thought, crossing a tidy stone bridge —"
+4. Italic direct thought: "*the Crown's hero, come home.*"
+
+Watch this especially when translating from the Hungarian drafts, which
+hold present tense at the deep points ("Már nincsenek messze," "Alig
+várja hogy elmesélje"). Back-shifting tense is fine and normal in English
+free indirect style ("They weren't far now"). Swapping his voice for the
+narrator's is not: "He couldn't wait to tell them" drops a whole rung and
+pushes the reader out of his head at the exact moment the passage should
+be going further in.
+
+**The one legitimate step back out is at the end**, where the narrator
+reports what the character can't see in himself: "and, hardly knowing he
+did, quickened his stride" ("szinte tudatalatt"). The body gives him away
+to us, not to him. Then the last line drops back inside to close.
