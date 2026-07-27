@@ -23,6 +23,11 @@ from wherever the divine planes don't naturally reach, is as good a candidate
 explanation as any for the "silent heavens," alongside the doctrinal
 possibilities `gameplay-lab` already leaves as `SUPERPOSITION`.
 
+The impact itself came in low and from the east rather than straight down —
+an oblique strike, which is why the crater's rim rises highest in the west
+and never fully closed on the eastern side at all. See this repo's
+`GEOGRAPHY.md` for what that shape means for the realm today.
+
 Left open here too: what later broke the crater wall specifically in the
 south, letting the Great Desert in.
 
