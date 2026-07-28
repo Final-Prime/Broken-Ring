@@ -14,6 +14,12 @@ given a small silver leaf, forged rather than cast, worn on the chest. Its
 shape is taken from the leaf of the ghost trees: broad, with drooping branched
 lobes that read unmistakably as a downturned human hand.
 
+In common speech it is simply a **ghost-leaf**. Guards, innkeepers and gate
+wardens ask for it by that name without ceremony, the way they would ask for a
+seal or a writ. It doubles as identification, so a man who has one can prove
+what he is at a gate. Nobody explains the name in conversation, because
+everybody already knows it.
+
 **The ghost trees** are the ring of arrested trees at the Assembly Glade in
 Lorienvale, the oldest blood-trees in the Ring (see
 `HISTORY_AND_COSMOLOGY.md`). Struck directly beneath the Cataclysm impact and
