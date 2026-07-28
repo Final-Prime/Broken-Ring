@@ -61,6 +61,40 @@ Second-person address is powerful and therefore rationed. Nothing published so
 far speaks to the reader directly. Keep it that way, so that the first time a
 piece does say "your" or "our", the address itself is the event.
 
+## The recurring shape: something takes a first bite
+
+One figure repeats across the work at wildly different scales. Something begins
+to consume something else, and the story opens at the first bite rather than at
+the aftermath. Structurally this is self-similarity; the reader-level instance
+is also a mise en abyme, a miniature of the whole placed inside it.
+
+It already operates on four scales without having been planned:
+
+- **Reader and book.** The prelude's lede. The reader takes a first taste of a
+  series that will go on eating.
+- **Garret and his own appetite.** The walk south is one long anticipated meal:
+  the harvest, the porch, the coffee, the girls' faces when he tells them.
+- **The Crown and its soldiers.** Two years taken, a piece of silver given
+  back, and the whole arrangement called service. The guard's line, that they
+  hand those out to whoever's left, is the moment the institutional scale shows
+  its teeth.
+- **The desert and the south.** Suncross, eaten.
+
+**This dies of density.** The complicity depends on the reader finding it. The
+moment a reader can predict the next consumption image, the machinery is
+visible and they become an audience instead of an accomplice. So: never name
+it, never cluster instances, and keep the scales far apart. Four across an
+entire series is plenty.
+
+Its real value is generative rather than decorative. When a new scene or
+subplot is needed, ask what the first bite looks like at that scale. Then use
+roughly one answer in five.
+
+**Keep it inside the world.** If the figure starts pointing at real-world
+politics it becomes allegory, and allegory comes with an answer key. Once there
+is a key there is no secret, only a message. The Crown, the Church, the Shroud
+and the Council can carry this indefinitely. Anything outside the Ring cannot.
+
 ## 1. Escalating triple negation into a "but" turn
 
 Three parallel negated claims (rule of three plus anaphora), the third
