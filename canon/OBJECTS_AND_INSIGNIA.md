@@ -57,3 +57,23 @@ Nobody in Elenvale finds it ominous. It is simply what a discharge looks like.
 
 Silver's folkloric associations with the restless dead are never remarked on
 in-story. Leave them unremarked.
+
+## The leaf's arc through the prelude
+
+The object carries the prelude's meaning, so it appears exactly three times and
+is never explained:
+
+1. **At the gate.** Garret hands it over to be checked, with more pride in the
+   gesture than the moment calls for. It works. It opens a door.
+2. **As he leaves.** The guard watches the leaf go rather than the man, having
+   not really looked at it the first time, and says to nobody that they don't
+   hand those out to the brave, they hand them to whoever's left.
+3. **At Suncross.** Garret is now, in the most literal and most terrible sense
+   available, whoever is left. He takes the leaf off to look at it, because the
+   guard's words have only now arrived, and his hand opens. Silver on sand.
+
+The falling must not read as a decision. Throwing it away would be a statement,
+a renunciation of service, and far too tidy. His hand simply stops holding
+things. The image also puts a picture of a tree that could not die on ground
+where nothing lives at all, a few paces from Tam, who cannot die properly
+either. None of that is ever said aloud.
