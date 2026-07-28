@@ -18,6 +18,38 @@ break to do the same job.
 
 Ellipses (`...`) are his and stay. Hyphens in compounds are fine.
 
+## The organizing principle: write to one reader, in code
+
+Everything below serves one effect, and it is worth naming because it
+explains why the individual patterns work. The reader should feel privately
+addressed, as though the story were being passed to an old friend in signals
+rather than performed for an audience.
+
+Stephen King calls this **telepathy**, and opens *On Writing* with it: writer
+and reader are not in the same room or even the same year, and yet their minds
+meet. It is why he addresses **Constant Reader**, singular. Not a crowd. One
+person, mid-conversation.
+
+Wayne Booth described the mechanism: irony builds a small community between
+author and reader, standing just above the character. The crucial part is that
+**the bond is made by the reader's own work.** A reader who assembles the
+meaning becomes complicit. A reader who is handed the meaning has merely been
+informed. Same information, completely different relationship.
+
+The operating rule, therefore: give the reader something the characters do not
+have, and then do not explain it. The withholding is the intimacy. Explanation
+dissolves it instantly.
+
+Patterns 2, 6, 7 and 8 are all instruments of this. So is the ghost-leaf, whose
+meaning is never stated in the prose. So is the guard's closing line, addressed
+to nobody.
+
+**Italics belong to the same signal system.** Italicise a word when it is
+carrying a second meaning the reader is trusted to find, not merely to press on
+it for volume. "*The Crown's hero, come home*" is italic because Garret is
+trying the title on, and the reader is meant to hear how it will sound in fifty
+miles.
+
 ## 1. Escalating triple negation into a "but" turn
 
 Three parallel negated claims (rule of three plus anaphora), the third
