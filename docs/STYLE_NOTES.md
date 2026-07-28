@@ -161,6 +161,38 @@ That last one is the persona exactly, almost tender, and about a walking corpse.
 Confining the voice to the frame keeps it rare without anyone having to ration
 it.
 
+### He judges, and states the verdict as fact
+
+The narrator is intelligent and cynical and makes no pretence of neutrality. He
+says what a thing is, in the grammatical shape of a description, and the
+description is the judgment.
+
+The ancestor is Tacitus, who wrote history this way: state the fact and let the
+arrangement convict. "They make a desolation and call it peace" carries no
+qualifying adjective at all and is nothing but verdict. Austen's opening
+sentence is the ironic form, an opinion wearing the clothes of universal fact.
+
+Already live here: "Not even a name worth remembering" is a verdict delivered
+flat. So is "there was more pride in the gesture than the moment called for."
+
+- **The judgment rides in word choice inside a factual sentence.** Never write
+  that the Crown is cruel. Write what it handed over in exchange, and let the
+  exchange say it.
+- **The contempt never lands on a person.** Toward Garret the narrator may be
+  amused and fond, as in "hardly knowing he did, quickened his stride", but
+  never sneering. Cynicism is reserved for institutions, arrangements and
+  transactions. A narrator who mocks the man's hope makes the man unlovable, and
+  then there is nothing worth eating.
+- **Keep the scale small.** A precise verdict on a gesture, an object or a deal
+  is dangerous. A verdict on the human condition is a bore. Opinions about life
+  make a narrator windy; an exact opinion about a badge makes him formidable.
+- **Say it once and never defend it.** Explaining a judgment is arguing.
+  Stating it and moving on is authority.
+- **Yield the verdict when a character can land it harder.** The narrator judges
+  Garret's pride because nobody in the scene can see it. He stays flat about the
+  ghost-leaf, because two minutes later the guard says what it really means. A
+  narrator who fires first robs his own characters.
+
 ## 0. The leash: appetite shown, then deliberately put away
 
 *A character technique, and the narrator's opposite number: a character on the
