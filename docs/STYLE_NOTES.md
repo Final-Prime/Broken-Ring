@@ -61,14 +61,21 @@ Second-person address is powerful and therefore rationed. Nothing published so
 far speaks to the reader directly. Keep it that way, so that the first time a
 piece does say "your" or "our", the address itself is the event.
 
-## The recurring shape: something takes a first bite
+## The world eats: what the work believes
 
-One figure repeats across the work at wildly different scales. Something begins
-to consume something else, and the story opens at the first bite rather than at
-the aftermath. Structurally this is self-similarity; the reader-level instance
-is also a mise en abyme, a miniature of the whole placed inside it.
+This is not a motif that happens to recur. It is the work's claim about how
+things are, and the recurrence is a symptom of the claim rather than a device.
+Everything here is either eating or being eaten. Tearing, feasting, taking
+first, hunter and quarry, an animal appetite under the manners. The narration
+never argues this. It arranges events so a reader paying attention arrives at
+it alone and feels let in on something.
 
-It already operates on four scales without having been planned:
+The lineage is naturalism: Jack London's law of club and fang, Frank Norris on
+the brute under the civilised man. Its modern and most pitiless form is
+McCarthy's *Blood Meridian*, where the judge says war is god and the book never
+says whether it agrees.
+
+The claim already operates on four scales without having been planned:
 
 - **Reader and book.** The prelude's lede. The reader takes a first taste of a
   series that will go on eating.
@@ -94,6 +101,29 @@ roughly one answer in five.
 politics it becomes allegory, and allegory comes with an answer key. Once there
 is a key there is no secret, only a message. The Crown, the Church, the Shroud
 and the Council can carry this indefinitely. Anything outside the Ring cannot.
+
+### Three guardrails
+
+**The narration never endorses it.** If the claim is ever stated, it is stated
+by a character, and the book declines to say whether it agrees. This already
+works: the guard is the one who says they hand those out to whoever's left. The
+prose does not. Keep the thesis out of the narrator's mouth permanently. A
+narrator who announces that the world devours is not wise, only pleased with
+itself.
+
+**The feast needs food worth eating.** A predatory world only lands if
+something genuinely lovely is lost, so most pages should be spent building
+things the reader wants kept. Garret's coffee on the porch, the harvest, the
+girls' faces when he tells them, the whole warm stupid daydream on the walk
+south: that is the meal. If the world were ugly to begin with, nothing would be
+taken and the horror would be free. The work is in the food, not the teeth.
+Bleakness without something to lose is the standard failure of this material.
+
+**Never be smug toward the reader who misses it.** The story must be complete
+and satisfying for someone reading it only as a story. The second layer is a
+gift, never a toll. The moment the text feels superior to a reader who did not
+catch the pattern, intimacy turns into condescension and the whole effect
+inverts.
 
 ## 1. Escalating triple negation into a "but" turn
 
