@@ -50,6 +50,17 @@ it for volume. "*The Crown's hero, come home*" is italic because Garret is
 trying the title on, and the reader is meant to hear how it will sound in fifty
 miles.
 
+**Determiners decide where the reader is standing.** "The first bite of the
+feast", "your first bite", "our first bite" all say the same thing and place
+the reader in three different positions. Impersonal determiners keep a double
+meaning alive; possessives force it to collapse into one. The prelude's lede
+uses "the" precisely because the feast is both the desert's, inside the story,
+and the reader's, outside it, and only "the" lets both stand.
+
+Second-person address is powerful and therefore rationed. Nothing published so
+far speaks to the reader directly. Keep it that way, so that the first time a
+piece does say "your" or "our", the address itself is the event.
+
 ## 1. Escalating triple negation into a "but" turn
 
 Three parallel negated claims (rule of three plus anaphora), the third
