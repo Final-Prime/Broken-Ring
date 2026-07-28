@@ -125,6 +125,51 @@ gift, never a toll. The moment the text feels superior to a reader who did not
 catch the pattern, intimacy turns into condescension and the whole effect
 inverts.
 
+## 0. The leash: appetite shown, then deliberately put away
+
+A character lets the predatory thing surface completely, sincerely, for two
+sentences, and then snaps back into perfect ordinariness and carries on with
+the business at hand.
+
+> He leaned in close to the man's throat and drew the smell of him in, and his
+> voice when it came was not steady. "I could tear you open. Here. Now." A
+> breath. "That smell. All that life in there, going and going, like it has
+> somewhere to be."
+>
+> Then he sat back, and the light in his eyes turned down like a wick.
+>
+> "But let's stay civilised." An ordinary voice now. Pleasant, even. "We came to
+> do business, didn't we."
+
+This is not Jekyll and Hyde. There is no transformation and therefore no
+excuse: one person, in full command throughout, who chose to show it and then
+chose to put it away. A villain who cannot control the appetite is merely
+dangerous. One who controls it perfectly is frightening, because the restraint
+is a favour that can be withdrawn.
+
+It is also the work's central claim at another scale. The Crown eats and calls
+it service. This creature eats and calls it business.
+
+Rules that make it work:
+
+- **The appetite must be sincere, never performed.** If the character is doing
+  a bit to intimidate, the scene is cheap. The wanting has to be real.
+- **The snap-back is the payload, not the appetite.** Keep the monstrous speech
+  shorter than instinct wants. The longer it talks, the more it becomes a
+  performance, and performances are not frightening.
+- **The return is instantaneous and total.** Not a gradual calming. A switch.
+- **Nothing reacts afterwards.** Nobody shivers, nobody swallows, the narration
+  does not comment, the scene simply continues. The reader has to hold the fear
+  alone, which is the whole point. Writing "Garret shivered" hands the fear back
+  and dissolves it.
+- **Use it once, maybe twice, in an entire work.** The second occurrence is far
+  worse than the first, because by then the reader knows it was not a bluff.
+
+Candidates in this setting: a Shroud negotiator, or a sentient Hollow, since
+canon holds that a minority keep memory, identity and reason while the hunger
+stays. A sentient Hollow holding its own appetite on a leash during a
+negotiation is this figure exactly.
+
 ## 1. Escalating triple negation into a "but" turn
 
 Three parallel negated claims (rule of three plus anaphora), the third
