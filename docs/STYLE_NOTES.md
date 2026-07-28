@@ -125,7 +125,48 @@ gift, never a toll. The moment the text feels superior to a reader who did not
 catch the pattern, intimacy turns into condescension and the whole effect
 inverts.
 
+## The narrator: host of the feast
+
+The voice telling these stories is warm, funny, plainly on the characters' side,
+and cannot take its eyes off the blood. Every so often, out of habit rather than
+intent, something with an appetite in it slips into the prose. The narrator does
+not apologise, does not notice, and carries on. Readers who hear it are being
+invited to the table.
+
+Nearest relatives: King, who names his reader and clearly relishes the carnage,
+and Roald Dahl, who is the purest form of it. Warm, funny, entirely on the
+child's side, and openly delighted by cruelty.
+
+**He must love what he feeds to the dark.** A narrator who only enjoys the
+slaughter is an edgelord, and worse, the reader will refuse to love anyone he
+introduces, having seen whose side he is on. King spends pages on small
+kindnesses and childhood before anything is eaten. The affection is what makes
+the appetite obscene instead of cheap. So: not a spectator, a host. He laid the
+table. That is why the feast line is his.
+
+**The appetite leaks, it is never performed.** A relish-line placed on purpose
+is a costume. One that escapes, unapologised for, and is walked past without
+comment, catches the reader in the act of noticing. Being caught noticing is far
+more intimate than being addressed.
+
+**Every appetite line keeps a fully innocent reading.** "The first bite of the
+feast" is atmosphere to one reader and an invitation to another, and nothing in
+the text adjudicates. Deniability is what makes it a signal rather than a
+statement, and it is also what protects the reader who never sits down.
+
+**The voice lives in the framing, not the body.** Inside a panel the prose stays
+close on the character. The lede and the panel headers belong to the narrator:
+"The counting stops before the walking does", "Some things the sand didn't take".
+That last one is the persona exactly, almost tender, and about a walking corpse.
+Confining the voice to the frame keeps it rare without anyone having to ration
+it.
+
 ## 0. The leash: appetite shown, then deliberately put away
+
+*A character technique, and the narrator's opposite number: a character on the
+leash chooses to show and chooses to stop, while the narrator's appetite simply
+leaks.*
+
 
 A character lets the predatory thing surface completely, sincerely, for two
 sentences, and then snaps back into perfect ordinariness and carries on with
