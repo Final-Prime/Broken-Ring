@@ -193,6 +193,55 @@ flat. So is "there was more pride in the gesture than the moment called for."
   ghost-leaf, because two minutes later the guard says what it really means. A
   narrator who fires first robs his own characters.
 
+## The numinous phrase: weight without meaning
+
+Some lines carry the entire sensation of significance while resisting every
+attempt to decode them, and they lodge harder than lines that actually mean
+something. "The owls are not what they seem." "He thrusts his fists against the
+posts and still insists he sees the ghosts." "All work and no play makes Jack a
+dull boy." None of them decode. All of them are permanent.
+
+The mechanism is that the feeling of understanding is a separate signal from
+understanding and can fire on its own. William James, experimenting with nitrous
+oxide, kept writing down the overwhelming revelations he was having, and found
+afterwards that one of them read "a smell of petroleum prevails throughout."
+Speech at the edge of sleep does the same: a perfectly formed sentence arrives
+carrying enormous conviction and no referent whatsoever. What produces the
+conviction is a missing authorship tag. The line does not feel constructed, so it
+feels received, so it feels deep.
+
+This is the strongest available form of reader complicity. A line the reader can
+decode is a message received and filed. A line they can only feel is one they go
+on carrying, because they can never confirm they got it.
+
+What makes a phrase work this way:
+
+- **Impeccable grammar.** It has to parse cleanly. Garbled language gets thrown
+  out as noise, while clean syntax delivers the signal that a statement has been
+  made.
+- **Plain, concrete, homely nouns.** Owls, fists, posts, fence, sand. The reader
+  tries to picture it, and the attempt manufactures the sense that a referent
+  exists somewhere out of view.
+- **Definiteness, and above all a number.** "*The* owls." "It appears *three*
+  times." A definite article and an exact count presuppose shared knowledge, as
+  though the reader ought to know already which owls and which three. That
+  presupposition is the trapdoor. "Several times" is flat; "three times" means
+  somebody counted, and you were not there.
+- **A sayable rhythm.** It should survive being muttered.
+- **Never explained.** Explanation kills it instantly and permanently.
+
+**The failure mode is grand vocabulary.** What separates Lynch from bad prophecy
+writing is register: owls and coffee and pie, not the Shadow and the Chosen and
+the Sundering. Abstract and portentous reads as decoration. Concrete and homely
+reads as a secret.
+
+Natural homes in this setting: the Hollows' Black Flag, whose faded purple swirl
+even they can no longer explain, and whatever the south used to say to itself. A
+children's rhyme out of Suncross would carry more dread than any description of
+what happened there. Demonstration of the mechanics only, not a proposal:
+"Count the fence posts, not the houses." One broken fence post is already the
+only upright thing in the arrival panel.
+
 ## 0. The leash: appetite shown, then deliberately put away
 
 *A character technique, and the narrator's opposite number: a character on the
