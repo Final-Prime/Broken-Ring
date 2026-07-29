@@ -242,6 +242,27 @@ what happened there. Demonstration of the mechanics only, not a proposal:
 "Count the fence posts, not the houses." One broken fence post is already the
 only upright thing in the arrival panel.
 
+**On bringing one back a second time.** Plain repetition of the exact line does
+not by itself preserve or add to its power. Saying it again because it worked
+once is decoration, and decoration is what kills it: the line starts to feel
+manufactured rather than found, which was the entire source of its weight.
+A second appearance has to do one of two jobs:
+
+- **Recontextualize.** Same words, a different speaker, a different stake,
+  so each occurrence reveals a new facet without ever resolving it. A rumor,
+  then something Garret witnesses himself, then something a stranger repeats
+  with no idea where it came from. Not repetition: spread. The spreading is
+  what is frightening.
+- **Let the repetition itself be the content.** Jack typing the same sentence
+  across hundreds of pages in *The Shining* does not add new meaning on each
+  pass; the compulsive act of retyping it is what shows the breakdown. This is
+  Freud's repetition compulsion (*Wiederholungszwang*): trauma surfacing not as
+  memory but as senseless, driven repetition. This is pattern 2 (form mirrors
+  content) at the scale of plot rather than sentence.
+
+If a second appearance does neither, leave the line alone. One clean
+occurrence beats a diluted pair.
+
 ## 0. The leash: appetite shown, then deliberately put away
 
 *A character technique, and the narrator's opposite number: a character on the
