@@ -313,6 +313,41 @@ canon holds that a minority keep memory, identity and reason while the hunger
 stays. A sentient Hollow holding its own appetite on a leash during a
 negotiation is this figure exactly.
 
+## 9. Incremental repetition: a fixed frame, one slot that changes
+
+The reader tracks change by watching one slot inside an otherwise identical
+frame, instead of being told a change occurred. This is pattern 7 (facts
+arrive by subtraction) stretched across the length of a whole piece instead of
+a single sentence.
+
+The folk form is called **incremental repetition** in ballad scholarship. Child
+Ballad 12, "Lord Randall," repeats an almost identical question-and-answer
+stanza across the whole poem, changing only the answer, until the final stanza
+reveals the son has been poisoned, entirely through what changed in the fixed
+slot. No line ever states the murder.
+
+The literary form is Elizabeth Bishop's villanelle "One Art." Its refrain, "the
+art of losing isn't hard to master," repeats with small modulations as the
+stakes climb: lost keys, a lost house, a lost continent, finally a lost person.
+The refrain cracks on an interjected "(Write it!)," the moment the poem's claim
+to composure fails in front of the reader.
+
+Two seeds already exist in this draft to build this on: companions peeling off
+one at a time at road forks in Panel 1, and Garret explicitly counting down the
+miles in Panel 3 ("Fifty. Twenty. Five."). Both are already countdowns. Neither
+yet shares a repeatable frame. Give them one, and a third appearance at the
+Hollow encounter would land as that frame's final, worst iteration rather than
+a new idea arriving from nowhere.
+
+Demonstration of the mechanics only, not a proposal to adopt as-is: a frame
+along the lines of "one less than yesterday," carried across the friends
+leaving, the miles remaining, and finally something at Suncross or with Tam.
+Exact wording is undecided.
+
+**Rule: the frame must stay recognizably identical each time**, same syntax,
+same rhythm. Vary the frame's own wording and the device disappears; all that
+is left is three unrelated sentences that happen to rhyme in theme.
+
 ## 1. Escalating triple negation into a "but" turn
 
 Three parallel negated claims (rule of three plus anaphora), the third
