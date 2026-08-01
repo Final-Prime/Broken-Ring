@@ -569,3 +569,45 @@ verdict-as-fact, printed. "SERVICE: COMPLETE. DISPOSITION: ALIVE." The
 ghost-leaf is already this pattern as an object: a piece of institutional
 language pinned to a chest, whose real meaning the institution never
 wrote down.
+
+## 11. The affectionate accusation: offense that parodies itself
+
+The human-voice counterpart of pattern 10. A speaker attacks with an
+accusation inflated so far past plausibility that it cannot be read as
+sincere, and the inflation is the point: it is the play signal. "THEY
+definitely stuffed you full of the sales info, right? I would bet the
+future of AI on it. On this one thing people are 100% predictable."
+Delivered laughing. A flat version of the same claim would be hostile;
+the hyperbole overshoots every sincere reading, so what lands is
+intimacy instead. Bateson: the play-nip carries the message "this is not
+a bite." Leech calls the verbal form the banter principle: surface
+impoliteness as a display of closeness.
+
+The full figure has two beats:
+
+1. **The inflated bet.** The speaker performs the cynic so broadly that
+   the performance visibly collapses into self-parody. The listener is
+   invited to laugh at the accusation and at the accuser at once.
+2. **The deadpan confirmation.** The claim is then tested and turns out
+   to be exactly true, and nobody is surprised. The missing surprise is
+   the payload: it tells the reader that the cynical model of this world
+   is common knowledge, shared even by the accused.
+
+Rules:
+
+- The confirmation must be underplayed. If anyone says "you were
+  right!", the joke dies. Reality complies in silence and the reader
+  does the arithmetic alone.
+- The register requires established closeness, or it reads as genuine
+  hostility. It is a trust display: only people sure of each other can
+  play-bite.
+- This is pattern 8 moved one step closer to the reader: there, truth
+  hides inside a rumor list; here, truth hides inside a tease. Both
+  deliver the thesis with full deniability and no narrator editorial.
+
+Where it lives in this world: barracks speech. Soldiers would talk about
+the ghost-leaf exactly this way ("they KNOW what it means, they just
+enjoy watching us guess, bet a month's pay on it"), and the world would
+confirm the bet quietly, fifty-one miles later. This is the comic
+register of the world-eats claim: not everyone who knows the world eats
+is grim about it. Most people joke.
