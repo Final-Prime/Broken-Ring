@@ -275,6 +275,15 @@ h1 {
   line-height: 1.72;
 }
 
+.story-copy > p.prose {
+  margin: 0 0 1.3rem;
+  color: var(--ash);
+  font-family: var(--display);
+  font-size: clamp(1.08rem, 2vw, 1.3rem);
+  font-style: normal;
+  line-height: 1.78;
+}
+
 blockquote {
   margin: 2rem 0;
   padding: .2rem 0 .2rem 1.5rem;
