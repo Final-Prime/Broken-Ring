@@ -531,3 +531,41 @@ The reader gets the truth, the characters get a joke, and nobody had to be
 told anything. Keep the absurd entry last, and keep it cheap and local
 (a naked queen, not a cosmic claim), so it reads as the punchline rather
 than as another rumor.
+
+## 10. The locked register: a voice that cannot step out of character
+
+Put a live human voice against an institutional voice that is locked in
+its register: a form, a ledger, an official notice, a clerk reciting
+policy, a service that answers every kind of message with its one kind of
+message. The human jokes, accuses, confesses, unravels. The institution
+answers in business language, because it has nothing else. The story
+lives in the gap, and this is the telepathy principle in its purest
+carrier: the reader reads the human between the lines of a transaction,
+and reads the institution in what it cannot say.
+
+Lineage: epistolary fiction, then the modern found-document forms. World
+War Z tells itself in interviews, Illuminae in chat logs and surveillance
+transcripts, the film Searching entirely in screens. Stories have been
+told through product reviews, support tickets, and autocomplete.
+
+The dial is the institution's response at the moment the human breaks
+frame and addresses the thing behind the counter (accuses it, jokes at
+it, begs it). Three settings:
+
+- **Silence.** Pure business text, zero acknowledgment. Institutional
+  horror: the silence reads as the institution's answer, and the reader
+  supplies the meaning.
+- **Warm complicity.** The institution acknowledges the accusation, even
+  charmingly, then proceeds with business unchanged. This is the leash
+  (pattern 0) at institutional scale: appetite admitted, then put away,
+  "we came to do business." The scariest setting.
+- **Denial while doing it.** Satire.
+
+In this setting the institutions have paperwork instead of chatbots. An
+interlude document in the Crown's own register (a discharge order, a
+requisition form, a gate ledger, an official condolence letter) can carry
+the world-eats claim in form language with no narrator present at all:
+verdict-as-fact, printed. "SERVICE: COMPLETE. DISPOSITION: ALIVE." The
+ghost-leaf is already this pattern as an object: a piece of institutional
+language pinned to a chest, whose real meaning the institution never
+wrote down.
