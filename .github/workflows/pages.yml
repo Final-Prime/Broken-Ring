@@ -1,14 +1,7 @@
 name: Deploy Broken Ring to Pages
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "public/**"
-      - ".github/workflows/pages.yml"
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
